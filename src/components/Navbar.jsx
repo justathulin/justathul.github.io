@@ -43,8 +43,8 @@ const Navbar = () => {
         }`}
       >
         <a href="#home" className="flex items-center gap-2 text-white font-bold text-lg shrink-0">
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#4a9ed9] to-[#a78bfa] flex items-center justify-center text-xs text-white font-black">A</span>
-          athul
+          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#4a9ed9] to-[#a78bfa] flex items-center justify-center text-xs text-white font-black">J</span>
+          justathul
         </a>
 
         <div className="hidden md:flex items-center gap-1">

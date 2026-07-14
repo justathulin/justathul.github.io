@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import GlowAvatar from './GlowAvatar';
 
-const nameChars = 'athul.'.split('');
+const nameChars = 'justathul.'.split('');
 const charVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] } }),
@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full flex justify-center items-center overflow-hidden mb-6">
-          <h2 className="text-[13vw] md:text-[9vw] leading-none font-display font-bold tracking-tight select-none w-full text-center flex justify-center">
+          <h2 className="text-[8.5vw] md:text-[5.8vw] leading-none font-display font-bold tracking-tight select-none w-full text-center flex justify-center">
             {nameChars.map((c, i) => (
               <motion.span
                 key={i}

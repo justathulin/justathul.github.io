@@ -40,7 +40,7 @@ const Footer = () => {
             <p className="text-[#5f7593] text-xs">© {new Date().getFullYear()} Athul P S · Cloud DevOps Engineer</p>
           </div>
           <div className="flex flex-col gap-1 md:items-center text-[#c8d6ea]">
-            <a href="mailto:hi@justathul.com" className="hover:text-[#7dd3fc]">hi@justathul.com</a>
+            <a href="mailto:hi@jusathul.com" className="hover:text-[#7dd3fc]">hi@jusathul.com</a>
           </div>
           <div className="flex flex-col gap-1 md:items-end text-[#c8d6ea]">
             <a href="https://linkedin.com/in/justathul" target="_blank" rel="noreferrer" className="hover:text-[#7dd3fc]">LinkedIn</a>

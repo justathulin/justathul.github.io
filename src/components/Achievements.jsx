@@ -13,7 +13,10 @@ const achievements = [
 ];
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
-const item = { hidden: { opacity: 0, y: 24, scale: 0.9 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 200, damping: 18 } } };
+const item = {
+  hidden: { opacity: 0, y: 24, scale: 0.9, rotateX: -55 },
+  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, transition: { type: 'spring', stiffness: 200, damping: 18 } },
+};
 
 const Achievements = () => {
   return (
@@ -25,12 +28,20 @@ const Achievements = () => {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Trophy shelf</h2>
         </motion.div>
 
-        <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid grid-cols-2 md:grid-cols-3 gap-4"
+          style={{ perspective: 1000 }}
+        >
           {achievements.map((a) => (
             <motion.div
               key={a.label}
               variants={item}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -6, rotateX: -4, rotateY: 4 }}
+              style={{ transformPerspective: 800 }}
               className="glass rounded-3xl p-5 relative overflow-hidden"
             >
               <div className="text-3xl mb-2">{a.emoji}</div>

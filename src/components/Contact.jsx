@@ -87,7 +87,7 @@ const Contact = () => {
             </motion.button>
 
             <p className="text-[11px] text-[#5f7593] mt-1">
-              routes to athuldevopz@gmail.com · Thrissur, Kerala — open to relocation
+              routes to athuldevopz@gmail.com · +91 96058 85554 · Thrissur, Kerala — open to relocation
             </p>
           </form>
         </motion.div>

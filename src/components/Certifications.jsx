@@ -1,14 +1,52 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
 
 const certifications = [
-  { emoji: '🧱', name: 'HashiCorp Certified: Terraform Associate (004)', issuer: 'HashiCorp', color: '#a78bfa' },
-  { emoji: '☁️', name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', color: '#7dd3fc' },
+  { emoji: '🧱', name: 'HashiCorp Certified: Terraform Associate (004)', issuer: 'HashiCorp', year: '2025', color: '#a78bfa' },
+  { emoji: '☁️', name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', year: '2022', color: '#7dd3fc' },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.14 } } };
-const item = { hidden: { opacity: 0, scale: 0.7, rotate: -6 }, visible: { opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 16 } } };
+const CertCard = ({ c, i }) => {
+  const ref = useRef(null);
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [8, -8]), { stiffness: 220, damping: 18 });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-8, 8]), { stiffness: 220, damping: 18 });
+
+  const handleMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width);
+    my.set((e.clientY - rect.top) / rect.height);
+  };
+  const handleLeave = () => { mx.set(0.5); my.set(0.5); };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      initial={{ opacity: 0, rotateY: -90 }}
+      whileInView={{ opacity: 1, rotateY: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      data-cursor-hover
+      className="flex items-center gap-4 glass rounded-3xl px-6 py-5 max-w-sm"
+    >
+      <div
+        className="w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0"
+        style={{ background: `radial-gradient(circle at 30% 30%, ${c.color}, ${c.color}55)` }}
+      >
+        {c.emoji}
+      </div>
+      <div>
+        <div className="text-sm font-bold text-white leading-snug">{c.name}</div>
+        <div className="text-[11px] text-[#8ba3c7] mt-1">{c.issuer} · {c.year}</div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Certifications = () => {
   return (
@@ -20,28 +58,11 @@ const Certifications = () => {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Badge collection</h2>
         </motion.div>
 
-        <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex flex-wrap gap-6">
-          {certifications.map((c) => (
-            <motion.div
-              key={c.name}
-              variants={item}
-              whileHover={{ y: -8, rotate: 2, scale: 1.03 }}
-              data-cursor-hover
-              className="flex items-center gap-4 glass rounded-3xl px-6 py-5 max-w-sm"
-            >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0"
-                style={{ background: `radial-gradient(circle at 30% 30%, ${c.color}, ${c.color}55)` }}
-              >
-                {c.emoji}
-              </div>
-              <div>
-                <div className="text-sm font-bold text-white leading-snug">{c.name}</div>
-                <div className="text-[11px] text-[#8ba3c7] mt-1">{c.issuer}</div>
-              </div>
-            </motion.div>
+        <div className="flex flex-wrap gap-6" style={{ perspective: 1000 }}>
+          {certifications.map((c, i) => (
+            <CertCard key={c.name} c={c} i={i} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
 import BackgroundBlobs from './BackgroundBlobs';
+import Cube3D from './Cube3D';
 
 const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
 const orbitIcons = ['☁️', '⚙️', '🛰️', '📦', '🐳'];
@@ -149,6 +150,14 @@ const Hero = () => {
           </motion.div>
 
           <GlowAvatar size={220} className="relative z-10" />
+
+          <motion.div
+            className="absolute top-2 right-2 md:top-0 md:right-4"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <Cube3D size={56} />
+          </motion.div>
         </div>
       </div>
     </section>

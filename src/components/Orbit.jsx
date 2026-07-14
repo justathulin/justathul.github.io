@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
 
 const stations = [
@@ -51,6 +51,10 @@ const packages = [
 const Station = ({ station, pathLength, containerRef }) => {
   const ref = useRef(null);
   const [isActive, setIsActive] = useState(false);
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-7, 7]), { stiffness: 200, damping: 20 });
 
   useMotionValueEvent(pathLength, 'change', (latest) => {
     if (!ref.current || !containerRef.current) return;
@@ -62,17 +66,29 @@ const Station = ({ station, pathLength, containerRef }) => {
     else if (lineTipY < triggerY && isActive) setIsActive(false);
   });
 
+  const handleMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width);
+    my.set((e.clientY - rect.top) / rect.height);
+  };
+  const handleLeave = () => { mx.set(0.5); my.set(0.5); };
+
   return (
     <motion.div
       ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6 }}
-      className={`w-72 sm:w-80 rounded-3xl glass z-10 transition-all duration-500 ${station.className}`}
+      className={`w-72 sm:w-80 rounded-3xl glass z-10 transition-colors duration-500 ${station.className}`}
       style={{
         borderColor: isActive ? station.color : undefined,
         boxShadow: isActive ? `0 20px 50px ${station.color}33` : 'none',
+        rotateX,
+        rotateY,
+        transformPerspective: 900,
       }}
     >
       <div className="p-6">

@@ -20,19 +20,15 @@ const projects = [
     link: 'https://ktunotes.in',
   },
   {
-    emoji: '🏦',
-    status: 'PRIVATE',
-    color: '#4a9ed9',
-    title: 'Enterprise Banking DevOps',
-    role: 'Cloud DevOps Engineer · Cloudcontrol · 2022–Present',
-    desc: 'End-to-end DevOps ownership for 5+ enterprise and banking clients across on-premise, air-gapped, and AWS Kubernetes environments — 24×7 availability.',
-    tags: ['AWS EKS', 'ArgoCD', 'Terraform', 'Prometheus', 'ELK Stack', 'VAPT'],
-    stats: [
-      { to: 99.9, decimals: 1, suffix: '%', label: 'uptime SLA' },
-      { to: 0, suffix: '', label: 'VAPT findings' },
-      { to: 15, suffix: '+', label: 'microservices' },
-    ],
-    link: null,
+    emoji: '💼',
+    status: 'LIVE',
+    color: '#a78bfa',
+    title: 'Careerlook',
+    role: 'careerlook.in',
+    desc: 'View my full career profile — detailed work history, endorsements, and verified experience on Careerlook.',
+    tags: [],
+    stats: [],
+    link: 'https://careerlook.in',
   },
 ];
 
@@ -84,20 +80,24 @@ const TiltCard = ({ project }) => {
         <p className="text-[11px] text-[#8ba3c7] mb-3">{project.role}</p>
         <p className="text-[13px] text-[#c8d6ea] leading-relaxed mb-4">{project.desc}</p>
 
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.tags.map((t) => (
-            <span key={t} className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#eaf1fb]">{t}</span>
-          ))}
-        </div>
+        {project.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {project.tags.map((t) => (
+              <span key={t} className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#eaf1fb]">{t}</span>
+            ))}
+          </div>
+        )}
 
-        <div className="flex gap-6 border-t border-white/10 pt-4 mb-4">
-          {project.stats.map((s) => (
-            <div key={s.label} className="flex flex-col gap-0.5">
-              <CountUp to={s.to} decimals={s.decimals || 0} suffix={s.suffix} className="text-lg font-bold" style={{ color: project.color }} />
-              <span className="text-[10px] text-[#8ba3c7]">{s.label}</span>
-            </div>
-          ))}
-        </div>
+        {project.stats.length > 0 && (
+          <div className="flex gap-6 border-t border-white/10 pt-4 mb-4">
+            {project.stats.map((s) => (
+              <div key={s.label} className="flex flex-col gap-0.5">
+                <CountUp to={s.to} decimals={s.decimals || 0} suffix={s.suffix} className="text-lg font-bold" style={{ color: project.color }} />
+                <span className="text-[10px] text-[#8ba3c7]">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {project.link ? (
           <a href={project.link} target="_blank" rel="noreferrer" className="text-xs font-bold hover:underline" style={{ color: project.color }}>
@@ -122,37 +122,11 @@ const Projects = () => {
           <p className="text-[#8ba3c7] text-sm md:text-base">Real traffic, real stakes, real 3am pages.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((p) => (
             <TiltCard key={p.title} project={p} />
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          whileHover={{ scale: 1.01 }}
-          className="glass rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-8"
-        >
-          <div>
-            <span className="inline-block text-[11px] font-bold text-[#0a1120] bg-gradient-to-r from-[#4a9ed9] to-[#7dd3fc] px-3 py-1 rounded-full mb-2.5">careerlook.in</span>
-            <h3 className="text-lg font-bold text-white font-display mb-1.5">View my full career profile</h3>
-            <p className="text-[13px] text-[#c8d6ea] max-w-md">Detailed work history, endorsements, and verified experience on Careerlook.</p>
-          </div>
-          <motion.a
-            href="https://careerlook.in"
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ x: 4 }}
-            data-cursor-hover
-            className="flex items-center gap-2.5 bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white text-sm font-bold px-6 py-3 rounded-full whitespace-nowrap"
-          >
-            Visit profile
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

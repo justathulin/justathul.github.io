@@ -1,95 +1,65 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
+import Mascot from './Mascot';
 
-const skillTags = ['kubernetes', 'aws', 'terraform', 'argocd', 'prometheus'];
-
-const jsonLines = [
-  { k: 'name', v: '"Athul P S"' },
-  { k: 'role', v: '"Cloud DevOps Engineer"' },
-  { k: 'location', v: '"Thrissur, Kerala, IN"' },
-  { k: 'experience_years', v: '5' },
-  { k: 'focus', v: '["aws", "kubernetes", "ci/cd", "observability"]' },
-  { k: 'status', v: '"open_to_relocation"' },
+const skillPlanets = [
+  { icon: '☸️', label: 'Kubernetes', color: '#6fc8ff' },
+  { icon: '☁️', label: 'AWS', color: '#ffd166' },
+  { icon: '🧱', label: 'Terraform', color: '#ff8a65' },
+  { icon: '🔁', label: 'ArgoCD', color: '#6fe3b4' },
+  { icon: '📊', label: 'Prometheus', color: '#f28ce0' },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-};
-const line = {
-  hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-};
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } } };
+const planet = { hidden: { opacity: 0, scale: 0.4, y: 20 }, visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 240, damping: 16 } } };
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#0a0e14] py-24 px-6 md:px-12 font-mono relative">
-      <div className="max-w-4xl mx-auto">
-        <Reveal>
-          <div className="text-xs text-[#6b7d8f] mb-2 tracking-widest uppercase">// about</div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">$ cat about.json</h2>
+    <section id="about" className="bg-[#1b1547] py-24 px-6 md:px-12 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-center">
+        <Reveal direction="left" className="flex justify-center md:justify-start">
+          <motion.div animate={{ rotate: [0, 3, 0, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
+            <Mascot size={180} />
+          </motion.div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="bg-[#0d1117] border border-[#1f2b3a] rounded-lg overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f2b3a] bg-[#10161f]">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#f0605a]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#f5b642]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#39d98a]" />
-              <span className="text-[11px] text-[#6b7d8f] ml-3">about.json</span>
+        <div>
+          <Reveal delay={0.1}>
+            <div className="inline-block text-xs font-bold text-[#b3a8e0] uppercase tracking-widest mb-3 bg-white/5 border border-[#3c3184] rounded-full px-3 py-1">
+              // about me
             </div>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-5">A little about me</h2>
+          </Reveal>
 
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              className="p-6 md:p-8 text-xs md:text-sm leading-relaxed"
-            >
-              <div className="text-[#6b7d8f]">{'{'}</div>
-              {jsonLines.map((l, i) => (
-                <motion.div key={l.k} variants={line} className="pl-6">
-                  <span className="text-[#7ee0ff]">"{l.k}"</span>
-                  <span className="text-[#6b7d8f]">: </span>
-                  <span className="text-[#f5b642]">{l.v}</span>
-                  {i < jsonLines.length - 1 && <span className="text-[#6b7d8f]">,</span>}
-                </motion.div>
-              ))}
-              <div className="text-[#6b7d8f]">{'}'}</div>
-            </motion.div>
-          </div>
-        </Reveal>
+          <Reveal delay={0.2}>
+            <div className="bg-[#241d5c] border-2 border-[#3c3184] rounded-3xl p-6 md:p-8 mb-8 shadow-[0_16px_40px_rgba(0,0,0,0.3)]">
+              <p className="text-[#e7e3fa] text-sm md:text-base leading-relaxed">
+                Hi, I'm <strong className="text-white">Athul P S</strong> — a Cloud DevOps Engineer based in Thrissur, Kerala. I spend my days (and plenty of nights) keeping production systems alive, secure, and blazing fast for enterprise and banking clients across AWS, on-premise, and air-gapped Kubernetes environments. When something breaks at 3am, I'm the one who gets paged — and I've made peace with that. 🛰️
+              </p>
+            </div>
+          </Reveal>
 
-        <Reveal delay={0.2} className="mt-8">
-          <p className="text-[#8b9bab] font-sans text-sm md:text-base leading-relaxed max-w-2xl mb-6">
-            Dedicated to keeping production systems alive, secure, and blazing fast for enterprise and banking clients across AWS, on-premise, and air-gapped Kubernetes environments.
-          </p>
-        </Reveal>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="flex items-center gap-2 flex-wrap text-xs"
-        >
-          <span className="text-[#6b7d8f] mr-1">$ ls ~/skills</span>
-          {skillTags.map((s, i) => (
-            <motion.span
-              key={s}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + i * 0.08, type: 'spring', stiffness: 260, damping: 18 }}
-              whileHover={{ y: -3, borderColor: 'rgba(57,217,138,0.6)' }}
-              data-cursor-hover
-              className="px-3 py-1.5 rounded border border-[#1f2b3a] bg-[#0d1117] text-[#39d98a]"
-            >
-              {s}
-            </motion.span>
-          ))}
-        </motion.div>
+          <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="flex flex-wrap gap-4">
+            {skillPlanets.map((s) => (
+              <motion.div
+                key={s.label}
+                variants={planet}
+                whileHover={{ y: -8, scale: 1.08 }}
+                data-cursor-hover
+                className="flex flex-col items-center gap-1.5 cursor-pointer"
+              >
+                <div
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl shadow-[0_8px_20px_rgba(0,0,0,0.3)]"
+                  style={{ background: `radial-gradient(circle at 30% 30%, ${s.color}, ${s.color}55)` }}
+                >
+                  {s.icon}
+                </div>
+                <span className="text-[11px] font-semibold text-[#b3a8e0]">{s.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

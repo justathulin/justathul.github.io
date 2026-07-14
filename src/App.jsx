@@ -5,7 +5,7 @@ import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Stack from './components/Stack'
+import Orbit from './components/Orbit'
 import Projects from './components/Projects'
 import Achievements from './components/Achievements'
 import Certifications from './components/Certifications'
@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
-      <Stack />
+      <Orbit />
       <Projects />
       <Achievements />
       <Certifications />

@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
-const fields = [
-  { id: 'firstName', label: 'first_name', type: 'text' },
-  { id: 'lastName', label: 'last_name', type: 'text' },
-  { id: 'email', label: 'email', type: 'email' },
-];
+import Mascot from './Mascot';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '', permission: false });
@@ -28,11 +23,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#0a0e14] py-24 px-6 md:px-12 font-mono border-t border-[#1f2b3a]">
-      <div className="max-w-2xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8">
-          <div className="text-xs text-[#6b7d8f] mb-2 tracking-widest uppercase">// contact</div>
-          <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">$ ./send-message.sh</h2>
+    <section id="contact" className="bg-[#1b1547] py-24 px-6 md:px-12 relative overflow-hidden">
+      <div className="max-w-3xl mx-auto relative">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8 text-center">
+          <div className="inline-block text-xs font-bold text-[#b3a8e0] uppercase tracking-widest mb-3 bg-white/5 border border-[#3c3184] rounded-full px-3 py-1">// contact</div>
+          <h2 className="font-display text-3xl md:text-5xl font-extrabold text-white mb-3">Send a transmission 📡</h2>
+          <p className="text-[#c9c2e8] text-sm md:text-base">I read every message — promise.</p>
         </motion.div>
 
         <motion.div
@@ -40,89 +36,56 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="bg-[#0d1117] border border-[#1f2b3a] rounded-lg overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+          className="bg-[#241d5c] border-2 border-[#3c3184] rounded-[2rem] p-6 md:p-10 relative shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
         >
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f2b3a] bg-[#10161f]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#f0605a]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#f5b642]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#39d98a]" />
-            <span className="text-[11px] text-[#6b7d8f] ml-3">send-message.sh</span>
+          <div className="hidden md:block absolute -top-16 right-8">
+            <Mascot size={120} />
           </div>
 
-          <form onSubmit={handleSubmit} className="p-6 md:p-8 flex flex-col gap-5 text-sm">
-            {fields.map((f, i) => (
-              <motion.div
-                key={f.id}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex items-center gap-2"
-              >
-                <span className="text-[#39d98a] shrink-0">{'>'} {f.label} =</span>
-                <input
-                  type={f.type}
-                  id={f.id}
-                  value={formData[f.id]}
-                  onChange={handleChange}
-                  required
-                  className="flex-1 bg-transparent border-b border-[#1f2b3a] focus:border-[#39d98a] outline-none text-[#c9d1d9] py-1 min-w-0"
-                />
-              </motion.div>
-            ))}
-
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.24 }}
-              className="flex items-start gap-2"
-            >
-              <span className="text-[#39d98a] shrink-0 pt-1">{'>'} message =</span>
-              <textarea
-                id="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="flex-1 bg-transparent border-b border-[#1f2b3a] focus:border-[#39d98a] outline-none text-[#c9d1d9] py-1 resize-none min-w-0"
-              />
-            </motion.div>
-
-            <motion.label
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="flex items-start gap-2.5 text-[11px] text-[#8b9bab] font-sans mt-1"
-            >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
-                type="checkbox"
-                id="permission"
-                checked={formData.permission}
-                onChange={handleChange}
-                className="mt-0.5 w-3.5 h-3.5"
-                style={{ accentColor: '#39d98a' }}
+                type="text" id="firstName" value={formData.firstName} onChange={handleChange} required
+                placeholder="First name"
+                className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+              />
+              <input
+                type="text" id="lastName" value={formData.lastName} onChange={handleChange} required
+                placeholder="Last name"
+                className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+              />
+            </div>
+            <input
+              type="email" id="email" value={formData.email} onChange={handleChange} required
+              placeholder="you@example.com"
+              className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+            />
+            <textarea
+              id="message" value={formData.message} onChange={handleChange} required rows={4}
+              placeholder="What's on your mind?"
+              className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors resize-none"
+            />
+
+            <label className="flex items-start gap-2.5 text-[12px] text-[#c9c2e8]">
+              <input
+                type="checkbox" id="permission" checked={formData.permission} onChange={handleChange}
+                className="mt-0.5 w-4 h-4" style={{ accentColor: '#ffd166' }}
               />
               I give permission to contact me at this email address.
-            </motion.label>
+            </label>
 
             <motion.button
               type="submit"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.36 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               data-cursor-hover
-              className="mt-2 self-start px-6 py-2.5 rounded bg-[#39d98a] text-[#05130c] font-bold text-xs hover:bg-[#4ee89b] transition-colors"
+              className="self-start px-7 py-3 rounded-full bg-[#ff8a65] text-[#1b1547] font-bold text-sm shadow-[0_8px_24px_rgba(255,138,101,0.35)]"
             >
-              $ ./send --confirm
+              Send transmission 🚀
             </motion.button>
 
-            <p className="text-[11px] text-[#6b7d8f] font-sans mt-1">
-              routes directly to <span className="text-[#39d98a]">athuldevopz@gmail.com</span> · Thrissur, Kerala — open to relocation
+            <p className="text-[11px] text-[#8478b8] mt-1">
+              routes to athuldevopz@gmail.com · Thrissur, Kerala — open to relocation
             </p>
           </form>
         </motion.div>

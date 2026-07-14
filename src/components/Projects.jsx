@@ -62,12 +62,14 @@ const TiltCard = ({ project }) => {
     >
       <div className="p-6 md:p-7">
         <div className="flex items-center justify-between mb-4">
-          <div
+          <motion.div
             className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
             style={{ background: `radial-gradient(circle at 30% 30%, ${project.color}, ${project.color}44)` }}
+            animate={{ rotateY: [0, 360] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
           >
             {project.emoji}
-          </div>
+          </motion.div>
           <span
             className="text-[10px] font-bold px-2.5 py-1 rounded-full"
             style={{ background: `${project.color}22`, color: project.color }}

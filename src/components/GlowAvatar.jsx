@@ -21,9 +21,9 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
   return (
     <motion.div
       className={`relative ${className}`}
-      style={{ width: size, height: size }}
-      animate={{ y: [0, -14, 0] }}
-      transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+      style={{ width: size, height: size, perspective: 900 }}
+      animate={{ y: [0, -14, 0], rotateY: [-8, 8, -8], rotateX: [3, -3, 3] }}
+      transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
     >
       {/* pulsing glow */}
       <motion.div

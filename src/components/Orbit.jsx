@@ -93,12 +93,14 @@ const Station = ({ station, pathLength, containerRef }) => {
     >
       <div className="p-6">
         <div className="flex items-center gap-3 mb-3">
-          <div
+          <motion.div
             className="w-11 h-11 rounded-full flex items-center justify-center text-xl shrink-0"
             style={{ background: `radial-gradient(circle at 30% 30%, ${station.color}, ${station.color}55)` }}
+            animate={{ rotateY: [0, 360] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
           >
             {station.icon}
-          </div>
+          </motion.div>
           <h3 className="text-lg font-bold text-white font-display">{station.title}</h3>
         </div>
         <p className="text-[13px] leading-relaxed text-[#c8d6ea] mb-4">{station.desc}</p>

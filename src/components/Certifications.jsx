@@ -34,12 +34,14 @@ const CertCard = ({ c, i }) => {
       data-cursor-hover
       className="flex items-center gap-4 glass rounded-3xl px-6 py-5 max-w-sm"
     >
-      <div
+      <motion.div
         className="w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0"
         style={{ background: `radial-gradient(circle at 30% 30%, ${c.color}, ${c.color}55)` }}
+        animate={{ rotateY: [0, 360] }}
+        transition={{ duration: 8 + i * 2, repeat: Infinity, ease: 'linear' }}
       >
         {c.emoji}
-      </div>
+      </motion.div>
       <div>
         <div className="text-sm font-bold text-white leading-snug">{c.name}</div>
         <div className="text-[11px] text-[#8ba3c7] mt-1">{c.issuer} · {c.year}</div>

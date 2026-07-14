@@ -36,18 +36,24 @@ const Achievements = () => {
           className="grid grid-cols-2 md:grid-cols-3 gap-4"
           style={{ perspective: 1000 }}
         >
-          {achievements.map((a) => (
+          {achievements.map((a, i) => (
             <motion.div
               key={a.label}
               variants={item}
-              whileHover={{ y: -6, rotateX: -4, rotateY: 4 }}
+              whileHover={{ y: -6, rotateX: -4, rotateY: 4, scale: 1.03 }}
               style={{ transformPerspective: 800 }}
               className="glass rounded-3xl p-5 relative overflow-hidden"
             >
-              <div className="text-3xl mb-2">{a.emoji}</div>
-              <CountUp to={a.to} decimals={a.decimals || 0} suffix={a.suffix} className="text-2xl font-bold font-display block mb-1" style={{ color: a.color }} />
-              <div className="text-[12px] font-bold text-white mb-1.5">{a.label}</div>
-              <div className="text-[11px] text-[#8ba3c7] leading-relaxed">{a.desc}</div>
+              <motion.div
+                animate={{ rotateX: [2, -2, 2], rotateY: [-3, 3, -3] }}
+                transition={{ duration: 4.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+                style={{ transformPerspective: 800 }}
+              >
+                <div className="text-3xl mb-2">{a.emoji}</div>
+                <CountUp to={a.to} decimals={a.decimals || 0} suffix={a.suffix} className="text-2xl font-bold font-display block mb-1" style={{ color: a.color }} />
+                <div className="text-[12px] font-bold text-white mb-1.5">{a.label}</div>
+                <div className="text-[11px] text-[#8ba3c7] leading-relaxed">{a.desc}</div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

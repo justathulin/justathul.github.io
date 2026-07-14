@@ -49,12 +49,14 @@ const About = () => {
                 data-cursor-hover
                 className="flex flex-col items-center gap-1.5 cursor-pointer"
               >
-                <div
+                <motion.div
                   className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl glass shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
                   style={{ boxShadow: `0 0 0 1px ${s.color}33 inset` }}
+                  animate={{ rotateY: [0, 360] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'linear', delay: 0.5 }}
                 >
                   {s.icon}
-                </div>
+                </motion.div>
                 <span className="text-[11px] font-semibold text-[#8ba3c7]">{s.label}</span>
               </motion.div>
             ))}

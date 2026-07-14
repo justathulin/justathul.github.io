@@ -7,7 +7,6 @@ import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import About from './components/About'
 import Orbit from './components/Orbit'
-import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Achievements from './components/Achievements'
 import Certifications from './components/Certifications'
@@ -25,7 +24,6 @@ function App() {
       <Marquee />
       <About />
       <Orbit />
-      <Experience />
       <Projects />
       <Achievements />
       <Certifications />

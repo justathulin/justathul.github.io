@@ -6,7 +6,7 @@ import BackgroundBlobs from './BackgroundBlobs';
 import Cube3D from './Cube3D';
 
 const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
-const orbitIcons = ['☁️', '⚙️', '🛰️', '📦', '🐳'];
+const orbitCubes = [44, 36, 50, 38, 42];
 
 const useMissionClock = () => {
   const [elapsed, setElapsed] = useState(0);
@@ -122,42 +122,28 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        <div className="relative flex items-center justify-center h-[380px] md:h-[420px]">
+        <div className="relative flex items-center justify-center h-[380px] md:h-[420px]" style={{ perspective: 1200 }}>
           <motion.div
             className="absolute w-[320px] h-[320px] md:w-[380px] md:h-[380px]"
             animate={{ rotate: 360 }}
-            transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
           >
-            {orbitIcons.map((icon, i) => {
-              const angle = (360 / orbitIcons.length) * i;
+            {orbitCubes.map((cubeSize, i) => {
+              const angle = (360 / orbitCubes.length) * i;
               const radius = 170;
               return (
                 <div
                   key={i}
-                  className="absolute top-1/2 left-1/2"
-                  style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  style={{ transform: `rotate(${angle}deg) translate(${radius}px)` }}
                 >
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
-                    className="text-3xl md:text-4xl -translate-x-1/2 -translate-y-1/2 drop-shadow-lg"
-                  >
-                    {icon}
-                  </motion.div>
+                  <Cube3D size={cubeSize} />
                 </div>
               );
             })}
           </motion.div>
 
           <GlowAvatar size={220} className="relative z-10" />
-
-          <motion.div
-            className="absolute top-2 right-2 md:top-0 md:right-4"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <Cube3D size={56} />
-          </motion.div>
         </div>
       </div>
     </section>

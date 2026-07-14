@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import avatar from '../assets/avatar.png';
+import avatar from '../assets/avatar.webp';
 
 // The real generated avatar photo, framed with a rotating gradient ring,
 // a pulsing glow, subtle mouse-parallax tilt, and a live status dot.

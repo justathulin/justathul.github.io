@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Mascot from './Mascot';
+import AnimeAvatar from './AnimeAvatar';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '', permission: false });
@@ -39,7 +39,7 @@ const Contact = () => {
           className="bg-[#241d5c] border-2 border-[#3c3184] rounded-[2rem] p-6 md:p-10 relative shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
         >
           <div className="hidden md:block absolute -top-16 right-8">
-            <Mascot size={120} />
+            <AnimeAvatar size={120} />
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
-import Mascot from './Mascot';
+import AnimeAvatar from './AnimeAvatar';
 
 const skillPlanets = [
   { icon: '☸️', label: 'Kubernetes', color: '#6fc8ff' },
@@ -20,7 +20,7 @@ const About = () => {
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-center">
         <Reveal direction="left" className="flex justify-center md:justify-start">
           <motion.div animate={{ rotate: [0, 3, 0, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-            <Mascot size={180} />
+            <AnimeAvatar size={180} />
           </motion.div>
         </Reveal>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Mascot from './Mascot';
+import AnimeAvatar from './AnimeAvatar';
 
 const nameChars = 'athul.'.split('');
 const charVariants = {
@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="bg-[#1b1547] border-t border-[#3c3184] pt-16 pb-10 px-6 md:px-12 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-center mb-4">
-          <Mascot size={100} />
+          <AnimeAvatar size={100} />
         </div>
 
         <div className="w-full flex justify-center items-center overflow-hidden mb-6">

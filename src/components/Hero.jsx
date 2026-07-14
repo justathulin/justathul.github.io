@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Mascot from './Mascot';
+import AnimeAvatar from './AnimeAvatar';
 import MagneticButton from './MagneticButton';
 
 const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
@@ -115,7 +115,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Mascot + orbiting icons */}
+        {/* Avatar + orbiting icons */}
         <div className="relative flex items-center justify-center h-[380px] md:h-[420px]">
           <motion.div
             className="absolute w-[320px] h-[320px] md:w-[380px] md:h-[380px]"
@@ -143,7 +143,7 @@ const Hero = () => {
             })}
           </motion.div>
 
-          <Mascot size={220} className="relative z-10" />
+          <AnimeAvatar size={220} className="relative z-10" />
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Mascot from './Mascot';
+import AnimeAvatar from './AnimeAvatar';
 
 const Preloader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,7 @@ const Preloader = () => {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
           >
-            <Mascot size={160} />
+            <AnimeAvatar size={160} />
           </motion.div>
 
           <motion.p

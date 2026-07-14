@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import AnimeAvatar from './AnimeAvatar';
+import GlowAvatar from './GlowAvatar';
+import BackgroundBlobs from './BackgroundBlobs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '', permission: false });
@@ -23,12 +24,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#1b1547] py-24 px-6 md:px-12 relative overflow-hidden">
-      <div className="max-w-3xl mx-auto relative">
+    <section id="contact" className="bg-[#0a1120] py-24 px-6 md:px-12 relative overflow-hidden">
+      <BackgroundBlobs />
+      <div className="max-w-2xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8 text-center">
-          <div className="inline-block text-xs font-bold text-[#b3a8e0] uppercase tracking-widest mb-3 bg-white/5 border border-[#3c3184] rounded-full px-3 py-1">// contact</div>
-          <h2 className="font-display text-3xl md:text-5xl font-extrabold text-white mb-3">Send a transmission 📡</h2>
-          <p className="text-[#c9c2e8] text-sm md:text-base">I read every message — promise.</p>
+          <div className="inline-block text-xs font-bold text-[#8ba3c7] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// contact</div>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">Let's talk</h2>
+          <p className="text-[#8ba3c7] text-sm md:text-base">I read every message — promise.</p>
         </motion.div>
 
         <motion.div
@@ -36,10 +38,10 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="bg-[#241d5c] border-2 border-[#3c3184] rounded-[2rem] p-6 md:p-10 relative shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+          className="glass rounded-[2rem] p-6 md:p-10 relative shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
         >
-          <div className="hidden md:block absolute -top-16 right-8">
-            <AnimeAvatar size={120} />
+          <div className="hidden md:block absolute -top-14 right-8">
+            <GlowAvatar size={100} />
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -47,29 +49,29 @@ const Contact = () => {
               <input
                 type="text" id="firstName" value={formData.firstName} onChange={handleChange} required
                 placeholder="First name"
-                className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#7dd3fc] rounded-2xl px-4 py-3 text-white placeholder-[#5f7593] outline-none transition-colors"
               />
               <input
                 type="text" id="lastName" value={formData.lastName} onChange={handleChange} required
                 placeholder="Last name"
-                className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#7dd3fc] rounded-2xl px-4 py-3 text-white placeholder-[#5f7593] outline-none transition-colors"
               />
             </div>
             <input
               type="email" id="email" value={formData.email} onChange={handleChange} required
               placeholder="you@example.com"
-              className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors"
+              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#7dd3fc] rounded-2xl px-4 py-3 text-white placeholder-[#5f7593] outline-none transition-colors"
             />
             <textarea
               id="message" value={formData.message} onChange={handleChange} required rows={4}
               placeholder="What's on your mind?"
-              className="bg-white/5 border-2 border-[#3c3184] focus:border-[#ffd166] rounded-2xl px-4 py-3 text-white placeholder-[#8478b8] outline-none transition-colors resize-none"
+              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#7dd3fc] rounded-2xl px-4 py-3 text-white placeholder-[#5f7593] outline-none transition-colors resize-none"
             />
 
-            <label className="flex items-start gap-2.5 text-[12px] text-[#c9c2e8]">
+            <label className="flex items-start gap-2.5 text-[12px] text-[#c8d6ea]">
               <input
                 type="checkbox" id="permission" checked={formData.permission} onChange={handleChange}
-                className="mt-0.5 w-4 h-4" style={{ accentColor: '#ffd166' }}
+                className="mt-0.5 w-4 h-4" style={{ accentColor: '#4a9ed9' }}
               />
               I give permission to contact me at this email address.
             </label>
@@ -79,12 +81,12 @@ const Contact = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               data-cursor-hover
-              className="self-start px-7 py-3 rounded-full bg-[#ff8a65] text-[#1b1547] font-bold text-sm shadow-[0_8px_24px_rgba(255,138,101,0.35)]"
+              className="self-start px-7 py-3 rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white font-bold text-sm shadow-[0_8px_24px_rgba(74,158,217,0.35)]"
             >
-              Send transmission 🚀
+              Send message
             </motion.button>
 
-            <p className="text-[11px] text-[#8478b8] mt-1">
+            <p className="text-[11px] text-[#5f7593] mt-1">
               routes to athuldevopz@gmail.com · Thrissur, Kerala — open to relocation
             </p>
           </form>

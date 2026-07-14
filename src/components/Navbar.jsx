@@ -39,11 +39,11 @@ const Navbar = () => {
     >
       <div
         className={`max-w-5xl mx-auto flex justify-between items-center rounded-full px-5 py-2.5 transition-all duration-500 ${
-          isScrolled || isOpen ? 'bg-[#241d5c]/90 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.3)] border border-[#3c3184]' : 'bg-[#241d5c]/50 border border-transparent'
+          isScrolled || isOpen ? 'glass shadow-[0_8px_30px_rgba(0,0,0,0.3)]' : 'bg-white/[0.03] border border-transparent'
         }`}
       >
         <a href="#home" className="flex items-center gap-2 text-white font-bold text-lg shrink-0">
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#ff8a65] to-[#ffd166] flex items-center justify-center text-sm">🚀</span>
+          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#4a9ed9] to-[#a78bfa] flex items-center justify-center text-xs text-white font-black">A</span>
           athul
         </a>
 
@@ -52,7 +52,7 @@ const Navbar = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="px-3.5 py-1.5 text-sm font-semibold text-[#b3a8e0] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
+              className="px-3.5 py-1.5 text-sm font-semibold text-[#8ba3c7] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -63,7 +63,7 @@ const Navbar = () => {
           href="#contact"
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.94 }}
-          className="hidden md:inline-block px-4 py-1.5 text-sm font-bold rounded-full bg-[#ff8a65] text-[#1b1547]"
+          className="hidden md:inline-block px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white"
         >
           Say hi ✨
         </motion.a>
@@ -86,7 +86,7 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="md:hidden max-w-5xl mx-auto mt-2 bg-[#241d5c] border border-[#3c3184] rounded-3xl overflow-hidden shadow-xl"
+            className="md:hidden max-w-5xl mx-auto mt-2 glass rounded-3xl overflow-hidden shadow-xl"
           >
             <div className="flex flex-col px-6 py-5 gap-1">
               {navLinks.map((link) => (
@@ -104,7 +104,7 @@ const Navbar = () => {
                 variants={linkVariants}
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 text-center px-4 py-2.5 rounded-full bg-[#ff8a65] text-[#1b1547] font-bold"
+                className="mt-3 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white font-bold"
               >
                 Say hi ✨
               </motion.a>

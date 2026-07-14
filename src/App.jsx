@@ -4,6 +4,7 @@ import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Marquee from './components/Marquee'
 import About from './components/About'
 import Orbit from './components/Orbit'
 import Projects from './components/Projects'
@@ -20,6 +21,7 @@ function App() {
       <ScrollProgress />
       <Navbar />
       <Hero />
+      <Marquee />
       <About />
       <Orbit />
       <Projects />

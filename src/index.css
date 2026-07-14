@@ -1,35 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #1b1547;
-  --color-bg-2: #241a5e;
-  --color-panel: #241d5c;
-  --color-panel-2: #2b2270;
-  --color-border: #3c3184;
-  --color-text: #f1eefc;
-  --color-muted: #b3a8e0;
-  --color-coral: #ff8a65;
-  --color-yellow: #ffd166;
-  --color-mint: #6fe3b4;
-  --color-sky: #6fc8ff;
-  --font-display: 'Baloo 2', 'Inter', sans-serif;
+  --color-bg: #0a1120;
+  --color-bg-2: #0d1730;
+  --color-panel: rgba(255, 255, 255, 0.04);
+  --color-border: rgba(122, 168, 217, 0.18);
+  --color-border-hover: rgba(122, 168, 217, 0.4);
+  --color-text: #eaf1fb;
+  --color-muted: #8ba3c7;
+  --color-blue: #4a9ed9;
+  --color-cyan: #7dd3fc;
+  --color-violet: #a78bfa;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-sans: 'Inter', sans-serif;
 
-  --animate-float-slow: floatSlow 7s ease-in-out infinite;
-  @keyframes floatSlow {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-18px) rotate(3deg); }
+  --animate-blob: blob 12s ease-in-out infinite;
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.1); }
+    66% { transform: translate(-20px, 25px) scale(0.95); }
   }
 
-  --animate-twinkle: twinkle 3s ease-in-out infinite;
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.1); }
+  --animate-gradient-shift: gradientShift 6s ease infinite;
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
 
 * {
@@ -60,11 +56,21 @@ h1, h2, h3, .font-display {
 }
 
 ::selection {
-  background: var(--color-coral);
-  color: #1b1547;
+  background: var(--color-blue);
+  color: #06101f;
 }
 
-.starfield {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-  background-size: 60px 60px;
+.glass {
+  background: var(--color-panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #4a9ed9, #7dd3fc, #a78bfa, #4a9ed9);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

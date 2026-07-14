@@ -1,19 +1,14 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const fields = [
+  { id: 'firstName', label: 'first_name', type: 'text' },
+  { id: 'lastName', label: 'last_name', type: 'text' },
+  { id: 'email', label: 'email', type: 'email' },
+];
 
 const Contact = () => {
-  const ref = useRef(null);
-
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-    permission: false,
-  });
-
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['-20%', '30%']);
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '', permission: false });
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -23,7 +18,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.permission) {
-      alert('Please accept the contact permission checkbox.');
+      alert('Please confirm the contact permission checkbox.');
       return;
     }
     const mailto = `mailto:athuldevopz@gmail.com?subject=${encodeURIComponent(
@@ -33,110 +28,102 @@ const Contact = () => {
   };
 
   return (
-    <section ref={ref} id="contact" className="bg-[#0a0a0a] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 border-t border-gray-900">
-      <motion.div
-        style={{ y }}
-        className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12"
-      >
-        <h1
-          className="text-[25vw] leading-[0.75] font-black text-white uppercase tracking-tighter select-none scale-y-[1.6] origin-top opacity-[0.06]"
-          style={{ fontFamily: "'Impact', 'Arial Black', sans-serif" }}
-        >
-          Contact
-        </h1>
-      </motion.div>
+    <section id="contact" className="bg-[#0a0e14] py-24 px-6 md:px-12 font-mono border-t border-[#1f2b3a]">
+      <div className="max-w-2xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8">
+          <div className="text-xs text-[#6b7d8f] mb-2 tracking-widest uppercase">// contact</div>
+          <h2 className="text-2xl md:text-4xl font-bold text-white tracking-tight">$ ./send-message.sh</h2>
+        </motion.div>
 
-      <div className="relative z-10 w-full flex justify-end items-end">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="bg-[#ff2a2a] w-full md:w-[85%] lg:w-[75%] p-8 md:p-16 text-white flex flex-col justify-between"
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="bg-[#0d1117] border border-[#1f2b3a] rounded-lg overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
         >
-          <div className="text-xs font-bold tracking-[0.2em] mb-12 md:mb-20 uppercase opacity-90">Reach Me</div>
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f2b3a] bg-[#10161f]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#f0605a]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#f5b642]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#39d98a]" />
+            <span className="text-[11px] text-[#6b7d8f] ml-3">send-message.sh</span>
+          </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-12 md:gap-16 w-full">
-            <div className="flex flex-col md:flex-row gap-12 md:gap-20 w-full">
-              <div className="flex-1 flex flex-col gap-10">
-                {['firstName', 'lastName', 'email'].map((field, i) => (
-                  <motion.div
-                    key={field}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i, duration: 0.5 }}
-                    className="relative"
-                  >
-                    <input
-                      type={field === 'email' ? 'email' : 'text'}
-                      id={field}
-                      value={formData[field]}
-                      onChange={handleChange}
-                      placeholder={field === 'firstName' ? 'First Name' : field === 'lastName' ? 'Last Name' : 'Email'}
-                      required
-                      className="w-full bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium rounded-none"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="flex-1 flex flex-col">
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                  className="relative h-full flex flex-col"
-                >
-                  <textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Type your message here"
-                    required
-                    className="w-full h-full min-h-[120px] bg-transparent border-b border-white/40 pb-3 text-lg focus:outline-none focus:border-white transition-colors placeholder-white font-medium resize-none rounded-none"
-                  />
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-12 mt-4">
-              <div className="flex-1 flex items-start gap-4 text-sm font-medium text-white/90">
+          <form onSubmit={handleSubmit} className="p-6 md:p-8 flex flex-col gap-5 text-sm">
+            {fields.map((f, i) => (
+              <motion.div
+                key={f.id}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex items-center gap-2"
+              >
+                <span className="text-[#39d98a] shrink-0">{'>'} {f.label} =</span>
                 <input
-                  type="checkbox"
-                  id="permission"
-                  checked={formData.permission}
+                  type={f.type}
+                  id={f.id}
+                  value={formData[f.id]}
                   onChange={handleChange}
-                  className="mt-1 w-4 h-4 rounded-sm border-white/40 bg-transparent text-white cursor-pointer"
-                  style={{ accentColor: 'white' }}
+                  required
+                  className="flex-1 bg-transparent border-b border-[#1f2b3a] focus:border-[#39d98a] outline-none text-[#c9d1d9] py-1 min-w-0"
                 />
-                <label htmlFor="permission" className="cursor-pointer max-w-[280px] leading-snug">
-                  I give permission to contact me at this email address.
-                </label>
-              </div>
+              </motion.div>
+            ))}
 
-              <div className="flex-1 flex flex-col gap-8 text-xs text-white/70 font-medium">
-                <p className="leading-relaxed max-w-[400px]">
-                  Your message goes directly to <strong>athuldevopz@gmail.com</strong>.
-                </p>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
-                  <p className="max-w-[250px] leading-relaxed">Based in Thrissur, Kerala — open to relocation.</p>
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.96 }}
-                    data-cursor-hover
-                    className="px-8 py-3 rounded-full border border-white/40 text-white font-bold flex items-center justify-center gap-3 hover:bg-white hover:text-[#ff2a2a] transition-all duration-300 group whitespace-nowrap self-start sm:self-auto"
-                  >
-                    Send
-                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </motion.button>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.24 }}
+              className="flex items-start gap-2"
+            >
+              <span className="text-[#39d98a] shrink-0 pt-1">{'>'} message =</span>
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="flex-1 bg-transparent border-b border-[#1f2b3a] focus:border-[#39d98a] outline-none text-[#c9d1d9] py-1 resize-none min-w-0"
+              />
+            </motion.div>
+
+            <motion.label
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="flex items-start gap-2.5 text-[11px] text-[#8b9bab] font-sans mt-1"
+            >
+              <input
+                type="checkbox"
+                id="permission"
+                checked={formData.permission}
+                onChange={handleChange}
+                className="mt-0.5 w-3.5 h-3.5"
+                style={{ accentColor: '#39d98a' }}
+              />
+              I give permission to contact me at this email address.
+            </motion.label>
+
+            <motion.button
+              type="submit"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.36 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              data-cursor-hover
+              className="mt-2 self-start px-6 py-2.5 rounded bg-[#39d98a] text-[#05130c] font-bold text-xs hover:bg-[#4ee89b] transition-colors"
+            >
+              $ ./send --confirm
+            </motion.button>
+
+            <p className="text-[11px] text-[#6b7d8f] font-sans mt-1">
+              routes directly to <span className="text-[#39d98a]">athuldevopz@gmail.com</span> · Thrissur, Kerala — open to relocation
+            </p>
           </form>
         </motion.div>
       </div>

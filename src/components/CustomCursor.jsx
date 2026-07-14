@@ -37,7 +37,7 @@ const CustomCursor = () => {
     <div className="hidden md:block" style={{ opacity: visible ? 1 : 0 }}>
       {/* Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#ff2a2a] pointer-events-none z-[99999]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#39d98a] pointer-events-none z-[99999]"
         style={{ x, y, translateX: '-50%', translateY: '-50%' }}
         animate={{ scale: isDown ? 0.6 : 1 }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}

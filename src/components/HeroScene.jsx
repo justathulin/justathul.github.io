@@ -92,8 +92,27 @@ const TechNode = ({ data, reduceMotion, index }) => {
   );
 };
 
+// Silk strands linking nodes to each other (not just back to the hub) so the
+// whole thing reads as a woven web rather than plain hub-and-spoke lines.
+const WebStrands = () => {
+  const n = TECH_NODES.length;
+  const strands = [];
+  for (let i = 0; i < n; i++) {
+    strands.push([TECH_NODES[i].position, TECH_NODES[(i + 1) % n].position]);
+    strands.push([TECH_NODES[i].position, TECH_NODES[(i + 2) % n].position]);
+  }
+  return (
+    <>
+      {strands.map((pts, i) => (
+        <Line key={i} points={pts} color="#e8dcc8" transparent opacity={0.14} lineWidth={1} />
+      ))}
+    </>
+  );
+};
+
 const TechNetwork = ({ reduceMotion }) => (
   <group>
+    <WebStrands />
     {TECH_NODES.map((n, i) => (
       <TechNode key={i} data={n} reduceMotion={reduceMotion} index={i} />
     ))}

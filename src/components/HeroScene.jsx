@@ -1,8 +1,15 @@
 import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, OrbitControls } from '@react-three/drei';
+import { Float, Html, MeshDistortMaterial, OrbitControls } from '@react-three/drei';
 
-const ORBIT_COLORS = ['#f97316', '#fbbf24', '#fdba74', '#22c55e', '#f97316', '#fbbf24'];
+const ORBIT_TOOLS = [
+  { icon: '☁️', color: '#f97316' },
+  { icon: '☸️', color: '#fbbf24' },
+  { icon: '🐳', color: '#fdba74' },
+  { icon: '🧱', color: '#22c55e' },
+  { icon: '📊', color: '#f97316' },
+  { icon: '🔁', color: '#fbbf24' },
+];
 
 const ParticleField = ({ count = 900 }) => {
   const positions = useMemo(() => {
@@ -36,13 +43,14 @@ const OrbitingSatellites = ({ reduceMotion }) => {
 
   const satellites = useMemo(
     () =>
-      ORBIT_COLORS.map((color, i) => {
-        const angle = (i / ORBIT_COLORS.length) * Math.PI * 2;
+      ORBIT_TOOLS.map(({ icon, color }, i) => {
+        const angle = (i / ORBIT_TOOLS.length) * Math.PI * 2;
         const radius = 2.5;
         return {
+          icon,
           color,
           position: [Math.cos(angle) * radius, Math.sin(angle * 1.4) * 0.6, Math.sin(angle) * radius],
-          size: 0.16 + (i % 2) * 0.06,
+          size: 0.22 + (i % 2) * 0.05,
         };
       }),
     []
@@ -55,6 +63,9 @@ const OrbitingSatellites = ({ reduceMotion }) => {
           <mesh position={s.position}>
             <sphereGeometry args={[s.size, 24, 24]} />
             <meshStandardMaterial color={s.color} emissive={s.color} emissiveIntensity={0.4} roughness={0.3} metalness={0.4} />
+            <Html center distanceFactor={7} occlude={false} style={{ pointerEvents: 'none' }}>
+              <div className="text-base leading-none select-none">{s.icon}</div>
+            </Html>
           </mesh>
         </Float>
       ))}

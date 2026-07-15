@@ -37,17 +37,6 @@ const stations = [
   },
 ];
 
-const packages = [
-  { category: 'Cloud & IaC', pkgs: ['AWS EC2', 'EKS', 'S3', 'VPC', 'IAM', 'RDS', 'Lambda', 'Terraform'] },
-  { category: 'CI/CD & GitOps', pkgs: ['GitHub Actions', 'GitLab CI', 'Bitbucket', 'ArgoCD', 'Canary'] },
-  { category: 'Containers & K8s', pkgs: ['Kubernetes', 'Docker', 'Helm', 'HPA', 'RBAC'] },
-  { category: 'Linux Admin', pkgs: ['Ubuntu', 'RHEL', 'Nginx', 'HAProxy', 'systemd'] },
-  { category: 'Observability', pkgs: ['Prometheus', 'Grafana', 'ELK', 'Graylog'] },
-  { category: 'DevSecOps', pkgs: ['VAPT', 'CVE Triage', 'TLS/SSL', 'Secrets Mgmt'] },
-  { category: 'Databases', pkgs: ['MongoDB', 'Redis', 'S3 Lifecycle'] },
-  { category: 'Automation', pkgs: ['Bash', 'Ansible', 'Telegram Bots'] },
-];
-
 const Station = ({ station, pathLength, containerRef }) => {
   const ref = useRef(null);
   const [isActive, setIsActive] = useState(false);
@@ -151,30 +140,6 @@ const Orbit = () => {
             ))}
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-8 glass rounded-3xl p-6 md:p-8"
-        >
-          <div className="text-sm font-bold text-white font-display mb-5">📡 Full toolbelt</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {packages.map((group, gi) => (
-              <motion.div key={group.category} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: gi * 0.06 }}>
-                <div className="text-[11px] font-bold text-[#fdba74] mb-2 uppercase tracking-wider">{group.category}</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {group.pkgs.map((p) => (
-                    <span key={p} className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 text-[#e8dcc8] border border-white/10 hover:border-[#fdba7488] hover:text-white transition-colors" data-cursor-hover>
-                      {p}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

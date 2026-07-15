@@ -17,7 +17,7 @@ const Contact = () => {
       alert('Please confirm the contact permission checkbox.');
       return;
     }
-    const mailto = `mailto:athuldevopz@gmail.com?subject=${encodeURIComponent(
+    const mailto = `mailto:hi@justathul.com?subject=${encodeURIComponent(
       `Portfolio Enquiry from ${formData.firstName} ${formData.lastName}`
     )}&body=${encodeURIComponent(`${formData.message}\n\nFrom: ${formData.email}`)}`;
     window.location.href = mailto;
@@ -87,7 +87,7 @@ const Contact = () => {
             </motion.button>
 
             <p className="text-[11px] text-[#6b5f52] mt-1">
-              routes to athuldevopz@gmail.com · +91 96058 85554 · Thrissur, Kerala — open to relocation
+              routes to hi@justathul.com · +91 96058 85554 · Thrissur, Kerala — open to relocation
             </p>
           </form>
         </motion.div>

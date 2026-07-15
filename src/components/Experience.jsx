@@ -53,14 +53,14 @@ const RoleCard = ({ role, i }) => (
       <div className="text-sm font-semibold mb-3" style={{ color: role.color }}>{role.company}</div>
       <p className="text-[13px] text-[#e8dcc8] leading-relaxed mb-5">{role.summary}</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <ul className="flex flex-col gap-2.5">
         {role.bullets.map((b) => (
-          <div key={b.label} className="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
-            <div className="text-[11px] font-bold text-white mb-1.5">{b.label}</div>
-            <p className="text-[12px] text-[#a89787] leading-relaxed">{b.text}</p>
-          </div>
+          <li key={b.label} className="flex gap-2.5 text-[12px] text-[#a89787] leading-relaxed">
+            <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: role.color }} />
+            {b.text}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </motion.div>
 );

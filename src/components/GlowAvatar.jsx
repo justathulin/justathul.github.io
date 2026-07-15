@@ -1,11 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import avatar from '../assets/avatar.webp';
+import devopsVideo from '../assets/devopsvideo.mp4';
 
 // The real generated avatar photo, framed with a rotating gradient ring,
 // a pulsing glow, subtle mouse-parallax tilt, and a live status dot.
+// On hover, the photo cross-fades into a looping DevOps showreel clip.
 const GlowAvatar = ({ size = 260, className = '' }) => {
   const ref = useRef(null);
+  const videoRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const rotateX = useSpring(useTransform(my, [0, 1], [10, -10]), { stiffness: 150, damping: 15 });
@@ -16,7 +20,16 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
     mx.set((e.clientX - rect.left) / rect.width);
     my.set((e.clientY - rect.top) / rect.height);
   };
-  const handleLeave = () => { mx.set(0.5); my.set(0.5); };
+  const handleEnter = () => {
+    setHovered(true);
+    videoRef.current?.play();
+  };
+  const handleLeave = () => {
+    mx.set(0.5);
+    my.set(0.5);
+    setHovered(false);
+    videoRef.current?.pause();
+  };
 
   return (
     <motion.div
@@ -41,10 +54,11 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       />
 
-      {/* photo with mouse-parallax tilt */}
+      {/* photo with mouse-parallax tilt, cross-fades to a video on hover */}
       <div
         ref={ref}
         onMouseMove={handleMove}
+        onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         style={{ perspective: 700 }}
         className="absolute inset-[6px] rounded-full overflow-hidden"
@@ -53,7 +67,20 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
           src={avatar}
           alt="Athul P S"
           style={{ rotateX, rotateY }}
-          className="w-full h-full object-cover scale-[1.12]"
+          animate={{ opacity: hovered ? 0 : 1 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-0 w-full h-full object-cover scale-[1.12]"
+        />
+        <motion.video
+          ref={videoRef}
+          src={devopsVideo}
+          muted
+          loop
+          playsInline
+          style={{ rotateX, rotateY }}
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-0 w-full h-full object-cover scale-[1.12]"
         />
       </div>
 

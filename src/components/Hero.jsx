@@ -57,11 +57,34 @@ const Hero = () => {
 
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Try to autoplay with sound first. Browsers block this unless the
+    // visitor already has high "media engagement" with the site, so we
+    // fall back to muted autoplay (always allowed) if it's rejected.
+    video.muted = false;
+    video.play()
+      .then(() => setMuted(false))
+      .catch(() => {
+        video.muted = true;
+        setMuted(true);
+        video.play().catch(() => {});
+      });
+
+    const syncMuted = () => setMuted(video.muted);
+    video.addEventListener('volumechange', syncMuted);
+    return () => video.removeEventListener('volumechange', syncMuted);
+  }, []);
+
   const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = !video.muted;
     setMuted(video.muted);
+    if (!video.muted) video.play().catch(() => {});
   };
 
   return (
@@ -78,34 +101,40 @@ const Hero = () => {
         ref={videoRef}
         src={devopsVideo}
         autoPlay
-        muted
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/70 via-[#0a1120]/80 to-[#0a1120]" />
 
-      <button
+      <motion.button
         type="button"
         onClick={toggleSound}
         data-cursor-hover
         aria-label={muted ? 'Unmute background video' : 'Mute background video'}
-        className="absolute top-24 right-6 z-30 w-10 h-10 rounded-full glass flex items-center justify-center text-white/80 hover:text-white transition-colors"
+        animate={muted ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+        transition={{ duration: 1.6, repeat: muted ? Infinity : 0, ease: 'easeInOut' }}
+        className={`absolute top-24 right-6 z-30 flex items-center gap-2 pl-3 pr-4 py-2 rounded-full font-bold text-xs transition-colors ${
+          muted
+            ? 'bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white shadow-[0_8px_24px_rgba(74,158,217,0.45)]'
+            : 'glass text-white/90 hover:text-white'
+        }`}
       >
         {muted ? (
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
             <line x1="23" y1="9" x2="17" y2="15" />
             <line x1="17" y1="9" x2="23" y2="15" />
           </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
           </svg>
         )}
-      </button>
+        {muted ? 'Tap for sound' : 'Sound on'}
+      </motion.button>
       <BackgroundBlobs />
       <motion.div className="absolute inset-0 pointer-events-none" style={{ background: spotlight }} />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px]" />

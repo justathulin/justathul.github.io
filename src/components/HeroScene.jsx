@@ -35,6 +35,43 @@ const ParticleField = ({ count = 900 }) => {
   );
 };
 
+const Satellite = ({ data, reduceMotion, index }) => {
+  const gemRef = useRef(null);
+  useFrame((_, delta) => {
+    if (!reduceMotion && gemRef.current) gemRef.current.rotation.y += delta * (0.5 + index * 0.12);
+  });
+
+  return (
+    <Float speed={reduceMotion ? 0 : 1.6 + index * 0.2} floatIntensity={reduceMotion ? 0 : 1.1} rotationIntensity={reduceMotion ? 0 : 0.35}>
+      <group position={data.position}>
+        {/* faceted gem instead of a smooth sphere */}
+        <mesh ref={gemRef}>
+          <icosahedronGeometry args={[data.size, 0]} />
+          <meshStandardMaterial color={data.color} emissive={data.color} emissiveIntensity={0.45} roughness={0.25} metalness={0.5} flatShading />
+        </mesh>
+
+        {/* thin glowing halo ring */}
+        <mesh rotation={[Math.PI / 2.3, 0.3, 0]}>
+          <torusGeometry args={[data.size * 1.7, 0.016, 8, 48]} />
+          <meshBasicMaterial color={data.color} transparent opacity={0.5} />
+        </mesh>
+
+        <Html center distanceFactor={7} occlude={false} style={{ pointerEvents: 'none' }}>
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center text-base border border-white/20 backdrop-blur-sm select-none"
+            style={{
+              background: `radial-gradient(circle at 30% 30%, ${data.color}, ${data.color}55)`,
+              boxShadow: `0 0 16px ${data.color}aa, 0 4px 14px rgba(0,0,0,0.35)`,
+            }}
+          >
+            {data.icon}
+          </div>
+        </Html>
+      </group>
+    </Float>
+  );
+};
+
 const OrbitingSatellites = ({ reduceMotion }) => {
   const group = useRef(null);
   useFrame((_, delta) => {
@@ -50,7 +87,7 @@ const OrbitingSatellites = ({ reduceMotion }) => {
           icon,
           color,
           position: [Math.cos(angle) * radius, Math.sin(angle * 1.4) * 0.6, Math.sin(angle) * radius],
-          size: 0.22 + (i % 2) * 0.05,
+          size: 0.24 + (i % 2) * 0.05,
         };
       }),
     []
@@ -59,15 +96,7 @@ const OrbitingSatellites = ({ reduceMotion }) => {
   return (
     <group ref={group}>
       {satellites.map((s, i) => (
-        <Float key={i} speed={reduceMotion ? 0 : 1.6 + i * 0.2} floatIntensity={reduceMotion ? 0 : 1.1} rotationIntensity={reduceMotion ? 0 : 0.4}>
-          <mesh position={s.position}>
-            <sphereGeometry args={[s.size, 24, 24]} />
-            <meshStandardMaterial color={s.color} emissive={s.color} emissiveIntensity={0.4} roughness={0.3} metalness={0.4} />
-            <Html center distanceFactor={7} occlude={false} style={{ pointerEvents: 'none' }}>
-              <div className="text-base leading-none select-none">{s.icon}</div>
-            </Html>
-          </mesh>
-        </Float>
+        <Satellite key={i} data={s} reduceMotion={reduceMotion} index={i} />
       ))}
     </group>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
@@ -6,8 +6,32 @@ import BackgroundBlobs from './BackgroundBlobs';
 import Cube3D from './Cube3D';
 import devopsVideo from '../assets/devopsvideo.mp4';
 
+const HeroScene = lazy(() => import('./HeroScene'));
+
 const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
 const orbitCubes = [44, 36, 50, 38, 42];
+
+const CubeOrbit = () => (
+  <motion.div
+    className="absolute w-[320px] h-[320px] md:w-[380px] md:h-[380px]"
+    animate={{ rotate: 360 }}
+    transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+  >
+    {orbitCubes.map((cubeSize, i) => {
+      const angle = (360 / orbitCubes.length) * i;
+      const radius = 170;
+      return (
+        <div
+          key={i}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{ transform: `rotate(${angle}deg) translate(${radius}px)` }}
+        >
+          <Cube3D size={cubeSize} />
+        </div>
+      );
+    })}
+  </motion.div>
+);
 
 const useMissionClock = () => {
   const [elapsed, setElapsed] = useState(0);
@@ -57,6 +81,15 @@ const Hero = () => {
 
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+  const [enable3D, setEnable3D] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const isSmall = window.innerWidth < 768;
+    setEnable3D(!isTouch && !isSmall);
+    setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -194,25 +227,13 @@ const Hero = () => {
         </div>
 
         <div className="relative flex items-center justify-center h-[380px] md:h-[420px]" style={{ perspective: 1200 }}>
-          <motion.div
-            className="absolute w-[320px] h-[320px] md:w-[380px] md:h-[380px]"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-          >
-            {orbitCubes.map((cubeSize, i) => {
-              const angle = (360 / orbitCubes.length) * i;
-              const radius = 170;
-              return (
-                <div
-                  key={i}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  style={{ transform: `rotate(${angle}deg) translate(${radius}px)` }}
-                >
-                  <Cube3D size={cubeSize} />
-                </div>
-              );
-            })}
-          </motion.div>
+          {enable3D ? (
+            <Suspense fallback={<CubeOrbit />}>
+              <HeroScene reduceMotion={reduceMotion} particleCount={900} />
+            </Suspense>
+          ) : (
+            <CubeOrbit />
+          )}
 
           <GlowAvatar size={220} className="relative z-10" />
         </div>

@@ -4,6 +4,7 @@ import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
 import BackgroundBlobs from './BackgroundBlobs';
 import Cube3D from './Cube3D';
+import devopsVideo from '../assets/devopsvideo.mp4';
 
 const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
 const orbitCubes = [44, 36, 50, 38, 42];
@@ -64,6 +65,15 @@ const Hero = () => {
       }}
       className="relative w-full min-h-screen overflow-hidden bg-[#0a1120] flex items-center pt-28 pb-16"
     >
+      <video
+        src={devopsVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/70 via-[#0a1120]/80 to-[#0a1120]" />
       <BackgroundBlobs />
       <motion.div className="absolute inset-0 pointer-events-none" style={{ background: spotlight }} />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px]" />

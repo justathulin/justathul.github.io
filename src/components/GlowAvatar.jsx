@@ -1,12 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import avatar from '../assets/avatar.webp';
-import devopsVideo from '../assets/devopsvideo.mp4';
 
-// The real generated avatar photo's spot is now a looping DevOps showreel
-// video, framed with a rotating gradient ring, a pulsing glow, subtle
-// mouse-parallax tilt, and a live status dot. The video autoplays and
-// loops continuously — no hover/tap needed, so it's visible on any device.
+// The real generated avatar photo, framed with a rotating gradient ring,
+// a pulsing glow, subtle mouse-parallax tilt, and a live status dot.
 const GlowAvatar = ({ size = 260, className = '' }) => {
   const ref = useRef(null);
   const mx = useMotionValue(0.5);
@@ -44,7 +41,7 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       />
 
-      {/* looping showreel video with mouse-parallax tilt */}
+      {/* photo with mouse-parallax tilt */}
       <div
         ref={ref}
         onMouseMove={handleMove}
@@ -52,15 +49,11 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
         style={{ perspective: 700 }}
         className="absolute inset-[6px] rounded-full overflow-hidden"
       >
-        <motion.video
-          src={devopsVideo}
-          poster={avatar}
-          autoPlay
-          muted
-          loop
-          playsInline
+        <motion.img
+          src={avatar}
+          alt="Athul P S"
           style={{ rotateX, rotateY }}
-          className="absolute inset-0 w-full h-full object-cover scale-[1.12]"
+          className="w-full h-full object-cover scale-[1.12]"
         />
       </div>
 

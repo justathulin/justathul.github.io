@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
@@ -55,6 +55,15 @@ const Hero = () => {
   const my = useMotionValue(0);
   const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(74,158,217,0.15), transparent 80%)`;
 
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(true);
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+  };
+
   return (
     <section
       id="home"
@@ -66,6 +75,7 @@ const Hero = () => {
       className="relative w-full min-h-screen overflow-hidden bg-[#0a1120] flex items-center pt-28 pb-16"
     >
       <video
+        ref={videoRef}
         src={devopsVideo}
         autoPlay
         muted
@@ -74,6 +84,28 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/70 via-[#0a1120]/80 to-[#0a1120]" />
+
+      <button
+        type="button"
+        onClick={toggleSound}
+        data-cursor-hover
+        aria-label={muted ? 'Unmute background video' : 'Mute background video'}
+        className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full glass flex items-center justify-center text-white/80 hover:text-white transition-colors"
+      >
+        {muted ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          </svg>
+        )}
+      </button>
       <BackgroundBlobs />
       <motion.div className="absolute inset-0 pointer-events-none" style={{ background: spotlight }} />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px]" />

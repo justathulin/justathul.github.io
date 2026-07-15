@@ -46,11 +46,10 @@ const RoleCard = ({ role, i }) => (
     {i !== roles.length - 1 && <div className="absolute left-[5px] top-5 bottom-[-3.5rem] w-px bg-white/10" />}
 
     <div className="glass rounded-3xl p-6 md:p-8">
-      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
         <h3 className="text-lg md:text-xl font-bold text-white font-display">{role.title}</h3>
         <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: role.color }}>{role.period}</span>
       </div>
-      <div className="text-sm font-semibold mb-3" style={{ color: role.color }}>{role.company}</div>
       <p className="text-[13px] text-[#e8dcc8] leading-relaxed mb-5">{role.summary}</p>
 
       <ul className="flex flex-col gap-2.5">

@@ -37,7 +37,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-[color:var(--color-border)] pt-6 text-sm">
           <div className="flex flex-col gap-2">
             <a href="#contact" className="text-white font-bold hover:text-[#fdba74]">Say hi ✨</a>
-            <p className="text-[#6b5f52] text-xs">© {new Date().getFullYear()} Athul P S · Cloud DevOps Engineer</p>
+            <p className="text-[#6b5f52] text-xs">© {new Date().getFullYear()} Athul P S · Senior DevOps Engineer</p>
           </div>
           <div className="flex flex-col gap-1 md:items-center text-[#e8dcc8]">
             <a href="mailto:hi@jusathul.com" className="hover:text-[#fdba74]">hi@jusathul.com</a>

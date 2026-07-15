@@ -35,7 +35,7 @@ const About = () => {
           <Reveal delay={0.2}>
             <div className="glass rounded-3xl p-6 md:p-8 mb-8 shadow-[0_16px_40px_rgba(0,0,0,0.25)]">
               <p className="text-[#e8dcc8] text-sm md:text-base leading-relaxed">
-                Hi, I'm <strong className="text-white">Athul P S</strong> — a Cloud DevOps Engineer based in Thrissur, Kerala. I spend my days (and plenty of nights) keeping production systems alive, secure, and blazing fast for enterprise and banking clients across AWS, on-premise, and air-gapped Kubernetes environments. When something breaks at 3am, I'm the one who gets paged — and I've made peace with that.
+                Hi, I'm <strong className="text-white">Athul P S</strong> — a Senior DevOps Engineer based in Thrissur, Kerala. I spend my days (and plenty of nights) keeping production systems alive, secure, and blazing fast for enterprise and banking clients across AWS, on-premise, and air-gapped Kubernetes environments. When something breaks at 3am, I'm the one who gets paged — and I've made peace with that.
               </p>
             </div>
           </Reveal>

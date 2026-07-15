@@ -8,7 +8,7 @@ import devopsVideo from '../assets/devopsvideo.mp4';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
-const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'Uptime Guardian', '24×7 Incident Responder'];
+const roles = ['Senior DevOps Engineer', 'Kubernetes Wrangler', 'CI/CD Pipeline Architect', 'Infrastructure Automation Expert'];
 const orbitCubes = [44, 36, 50, 38, 42];
 
 const CubeOrbit = () => (

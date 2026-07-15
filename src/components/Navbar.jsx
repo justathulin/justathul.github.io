@@ -44,7 +44,7 @@ const Navbar = () => {
         }`}
       >
         <a href="#home" className="flex items-center gap-2 text-white font-bold text-lg shrink-0">
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#4a9ed9] to-[#a78bfa] flex items-center justify-center text-xs text-white font-black">J</span>
+          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#f97316] to-[#fbbf24] flex items-center justify-center text-xs text-white font-black">J</span>
           justathul
         </a>
 
@@ -53,7 +53,7 @@ const Navbar = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="px-3.5 py-1.5 text-sm font-semibold text-[#8ba3c7] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
+              className="px-3.5 py-1.5 text-sm font-semibold text-[#a89787] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
           href="#contact"
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.94 }}
-          className="hidden md:inline-block px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white"
+          className="hidden md:inline-block px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white"
         >
           Say hi ✨
         </motion.a>
@@ -105,7 +105,7 @@ const Navbar = () => {
                 variants={linkVariants}
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white font-bold"
+                className="mt-3 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white font-bold"
               >
                 Say hi ✨
               </motion.a>

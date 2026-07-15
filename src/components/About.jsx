@@ -5,9 +5,9 @@ import GlowAvatar from './GlowAvatar';
 import BackgroundBlobs from './BackgroundBlobs';
 
 const skillPlanets = [
-  { icon: '☸️', label: 'Kubernetes', color: '#4a9ed9' },
-  { icon: '☁️', label: 'AWS', color: '#7dd3fc' },
-  { icon: '🧱', label: 'Terraform', color: '#a78bfa' },
+  { icon: '☸️', label: 'Kubernetes', color: '#f97316' },
+  { icon: '☁️', label: 'AWS', color: '#fdba74' },
+  { icon: '🧱', label: 'Terraform', color: '#fbbf24' },
   { icon: '🔁', label: 'ArgoCD', color: '#22c55e' },
   { icon: '📊', label: 'Prometheus', color: '#f472b6' },
 ];
@@ -17,7 +17,7 @@ const planet = { hidden: { opacity: 0, scale: 0.4, y: 20 }, visible: { opacity: 
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#0a1120] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="about" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-center relative z-10">
         <Reveal direction="left" className="flex justify-center md:justify-start">
@@ -26,7 +26,7 @@ const About = () => {
 
         <div>
           <Reveal delay={0.1}>
-            <div className="inline-block text-xs font-bold text-[#8ba3c7] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">
+            <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">
               // about me
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">A little about me</h2>
@@ -34,7 +34,7 @@ const About = () => {
 
           <Reveal delay={0.2}>
             <div className="glass rounded-3xl p-6 md:p-8 mb-8 shadow-[0_16px_40px_rgba(0,0,0,0.25)]">
-              <p className="text-[#c8d6ea] text-sm md:text-base leading-relaxed">
+              <p className="text-[#e8dcc8] text-sm md:text-base leading-relaxed">
                 Hi, I'm <strong className="text-white">Athul P S</strong> — a Cloud DevOps Engineer based in Thrissur, Kerala. I spend my days (and plenty of nights) keeping production systems alive, secure, and blazing fast for enterprise and banking clients across AWS, on-premise, and air-gapped Kubernetes environments. When something breaks at 3am, I'm the one who gets paged — and I've made peace with that.
               </p>
             </div>
@@ -57,7 +57,7 @@ const About = () => {
                 >
                   {s.icon}
                 </motion.div>
-                <span className="text-[11px] font-semibold text-[#8ba3c7]">{s.label}</span>
+                <span className="text-[11px] font-semibold text-[#a89787]">{s.label}</span>
               </motion.div>
             ))}
           </motion.div>

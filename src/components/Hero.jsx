@@ -44,7 +44,7 @@ const TypedRole = () => {
   return (
     <span className="gradient-text animate-gradient-shift">
       {text}
-      <span className="inline-block w-[3px] h-[0.85em] bg-[#7dd3fc] ml-1 align-middle" style={{ animation: 'blink 1s step-end infinite' }} />
+      <span className="inline-block w-[3px] h-[0.85em] bg-[#fdba74] ml-1 align-middle" style={{ animation: 'blink 1s step-end infinite' }} />
     </span>
   );
 };
@@ -53,7 +53,7 @@ const Hero = () => {
   const clock = useMissionClock();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(74,158,217,0.15), transparent 80%)`;
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(249,115,22,0.15), transparent 80%)`;
 
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
@@ -95,7 +95,7 @@ const Hero = () => {
         mx.set(e.clientX - rect.left);
         my.set(e.clientY - rect.top);
       }}
-      className="relative w-full min-h-screen overflow-hidden bg-[#0a1120] flex items-center pt-28 pb-16"
+      className="relative w-full min-h-screen overflow-hidden bg-[#0d0a08] flex items-center pt-28 pb-16"
     >
       <video
         ref={videoRef}
@@ -105,7 +105,7 @@ const Hero = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/70 via-[#0a1120]/80 to-[#0a1120]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a08]/70 via-[#0d0a08]/80 to-[#0d0a08]" />
 
       <motion.button
         type="button"
@@ -116,7 +116,7 @@ const Hero = () => {
         transition={{ duration: 1.6, repeat: muted ? Infinity : 0, ease: 'easeInOut' }}
         className={`absolute top-24 right-6 z-30 flex items-center gap-2 pl-3 pr-4 py-2 rounded-full font-bold text-xs transition-colors ${
           muted
-            ? 'bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white shadow-[0_8px_24px_rgba(74,158,217,0.45)]'
+            ? 'bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white shadow-[0_8px_24px_rgba(249,115,22,0.45)]'
             : 'glass text-white/90 hover:text-white'
         }`}
       >
@@ -145,7 +145,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#8ba3c7] mb-6 glass rounded-full px-3.5 py-1.5"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#a89787] mb-6 glass rounded-full px-3.5 py-1.5"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />
             available for work · uptime {clock}
@@ -173,7 +173,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-[#8ba3c7] text-sm md:text-base mb-9 max-w-md leading-relaxed"
+            className="text-[#a89787] text-sm md:text-base mb-9 max-w-md leading-relaxed"
           >
             Keeping production alive — 24×7. 5+ years of Kubernetes, AWS, CI/CD, and zero-downtime deployments for enterprise and banking clients.
           </motion.p>
@@ -184,10 +184,10 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="flex flex-row items-center gap-4 flex-wrap"
           >
-            <MagneticButton href="#projects" data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[#4a9ed9] to-[#a78bfa] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(74,158,217,0.35)]">
+            <MagneticButton href="#projects" data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(249,115,22,0.35)]">
               See my work →
             </MagneticButton>
-            <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-full glass text-white font-bold inline-block text-center hover:border-[#7dd3fc]">
+            <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-full glass text-white font-bold inline-block text-center hover:border-[#fdba74]">
               Say hello
             </MagneticButton>
           </motion.div>

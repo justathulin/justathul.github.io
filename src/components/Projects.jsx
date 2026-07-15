@@ -22,7 +22,7 @@ const projects = [
   {
     emoji: '📲',
     status: 'LIVE',
-    color: '#a78bfa',
+    color: '#fbbf24',
     title: 'Careerlook',
     role: 'Founder & Creator · careerlook.in',
     desc: 'Every IT job in one place. A subscription bot that aggregates listings from direct hiring teams, company career pages, Naukri, LinkedIn, and Kerala IT parks (Technopark, Infopark, Cyberpark, KINFRA) — filtered by role and delivered instantly to WhatsApp or Telegram.',
@@ -79,13 +79,13 @@ const TiltCard = ({ project }) => {
         </div>
 
         <h3 className="text-lg font-bold text-white font-display mb-1">{project.title}</h3>
-        <p className="text-[11px] text-[#8ba3c7] mb-3">{project.role}</p>
-        <p className="text-[13px] text-[#c8d6ea] leading-relaxed mb-4">{project.desc}</p>
+        <p className="text-[11px] text-[#a89787] mb-3">{project.role}</p>
+        <p className="text-[13px] text-[#e8dcc8] leading-relaxed mb-4">{project.desc}</p>
 
         {project.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-5">
             {project.tags.map((t) => (
-              <span key={t} className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#eaf1fb]">{t}</span>
+              <span key={t} className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#f5ede2]">{t}</span>
             ))}
           </div>
         )}
@@ -95,7 +95,7 @@ const TiltCard = ({ project }) => {
             {project.stats.map((s) => (
               <div key={s.label} className="flex flex-col gap-0.5">
                 <CountUp to={s.to} decimals={s.decimals || 0} suffix={s.suffix} className="text-lg font-bold" style={{ color: project.color }} />
-                <span className="text-[10px] text-[#8ba3c7]">{s.label}</span>
+                <span className="text-[10px] text-[#a89787]">{s.label}</span>
               </div>
             ))}
           </div>
@@ -106,7 +106,7 @@ const TiltCard = ({ project }) => {
             Visit site →
           </a>
         ) : (
-          <span className="text-xs text-[#8ba3c7]">🔒 private engagement</span>
+          <span className="text-xs text-[#a89787]">🔒 private engagement</span>
         )}
       </div>
     </motion.div>
@@ -115,13 +115,13 @@ const TiltCard = ({ project }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-[#0a1120] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="projects" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">
-          <div className="inline-block text-xs font-bold text-[#8ba3c7] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// missions</div>
+          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// missions</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">Things I've launched</h2>
-          <p className="text-[#8ba3c7] text-sm md:text-base">Real traffic, real stakes, real 3am pages.</p>
+          <p className="text-[#a89787] text-sm md:text-base">Real traffic, real stakes, real 3am pages.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

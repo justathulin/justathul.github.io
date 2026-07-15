@@ -7,7 +7,7 @@ const roles = [
     company: 'Cloudcontrol',
     title: 'Cloud DevOps Engineer',
     period: 'June 2022 – Present',
-    color: '#4a9ed9',
+    color: '#f97316',
     summary: 'End-to-end DevOps ownership for 5+ enterprise and banking clients across on-premise, air-gapped, and AWS environments.',
     bullets: [
       { label: 'Production Availability', text: 'Sole DevOps owner for 24×7 production systems across 5+ enterprise and banking clients; maintained 99.9%+ uptime SLA on Kubernetes deployments; led DR planning, runbook authorship, and live failover/switchover procedures.' },
@@ -24,7 +24,7 @@ const roles = [
     company: 'KTUNotes',
     title: 'Founder & Platform Engineer',
     period: 'June 2021 – June 2022',
-    color: '#a78bfa',
+    color: '#fbbf24',
     summary: 'Conceived, built, and operated a production-grade e-learning platform for the KTU B.Tech student community — sole engineer with end-to-end ownership of product, infrastructure, CI/CD, scaling, and operations.',
     bullets: [
       { label: 'Scale', text: 'Scaled the platform to 572,000+ monthly unique visitors (Cloudflare-verified) as the sole infrastructure owner — comparable to mid-tier commercial platforms, managed without a dedicated ops team or cloud budget; sustained 99%+ uptime through exam-season load spikes.' },
@@ -51,13 +51,13 @@ const RoleCard = ({ role, i }) => (
         <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: role.color }}>{role.period}</span>
       </div>
       <div className="text-sm font-semibold mb-3" style={{ color: role.color }}>{role.company}</div>
-      <p className="text-[13px] text-[#c8d6ea] leading-relaxed mb-5">{role.summary}</p>
+      <p className="text-[13px] text-[#e8dcc8] leading-relaxed mb-5">{role.summary}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {role.bullets.map((b) => (
           <div key={b.label} className="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
             <div className="text-[11px] font-bold text-white mb-1.5">{b.label}</div>
-            <p className="text-[12px] text-[#8ba3c7] leading-relaxed">{b.text}</p>
+            <p className="text-[12px] text-[#a89787] leading-relaxed">{b.text}</p>
           </div>
         ))}
       </div>
@@ -67,13 +67,13 @@ const RoleCard = ({ role, i }) => (
 
 const Experience = () => {
   return (
-    <section id="experience" className="bg-[#0a1120] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="experience" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14">
-          <div className="inline-block text-xs font-bold text-[#8ba3c7] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// deployment log</div>
+          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// deployment log</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">Where I've shipped</h2>
-          <p className="text-[#8ba3c7] text-sm md:text-base">5+ years, zero downtime excuses.</p>
+          <p className="text-[#a89787] text-sm md:text-base">5+ years, zero downtime excuses.</p>
         </motion.div>
 
         <div className="flex flex-col gap-14">

@@ -168,7 +168,7 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-[var(--color-muted)] text-sm md:text-base mb-9 max-w-md leading-relaxed"
           >
-            Keeping production alive — 24×7. 5+ years of Kubernetes, AWS, CI/CD, and zero-downtime deployments for enterprise and banking clients.
+            Building and automating cloud infrastructure — Kubernetes, AWS, Terraform, and CI/CD pipelines. 5+ years shipping zero-downtime deployments for enterprise and banking clients.
           </motion.p>
 
           <motion.div

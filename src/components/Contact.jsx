@@ -87,7 +87,10 @@ const Contact = () => {
             </motion.button>
 
             <p className="text-[11px] text-[var(--color-text-faint)] mt-1">
-              routes to hi@justathul.com · +91 96058 85554 · Thrissur, Kerala — open to relocation
+              routes to hi@justathul.com · +91 96058 85554 · Thrissur, Kerala — open to relocation ·{' '}
+              <a href="https://linkedin.com/in/justathul" target="_blank" rel="noreferrer" className="underline hover:text-[var(--color-accent-2)]">
+                linkedin.com/in/justathul
+              </a>
             </p>
           </form>
         </motion.div>

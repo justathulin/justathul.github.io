@@ -73,6 +73,20 @@ const Navbar = ({ onOpenFreelance }) => {
 
         <div className="hidden lg:flex items-center gap-2 shrink-0">
           <motion.a
+            href="https://linkedin.com/in/justathul"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            aria-label="LinkedIn profile"
+            title="LinkedIn profile"
+            className="w-8 h-8 flex items-center justify-center rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z" />
+            </svg>
+          </motion.a>
+          <motion.a
             href="/Athul-PS-Resume.pdf"
             download
             whileHover={{ scale: 1.06 }}
@@ -139,6 +153,19 @@ const Navbar = ({ onOpenFreelance }) => {
                   {link.label}
                 </motion.a>
               ))}
+              <motion.a
+                variants={linkVariants}
+                href="https://linkedin.com/in/justathul"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-white font-semibold text-base py-2.5 border-b border-white/10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z" />
+                </svg>
+                LinkedIn
+              </motion.a>
               <motion.a
                 variants={linkVariants}
                 href="/Athul-PS-Resume.pdf"

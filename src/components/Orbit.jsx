@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
 
 const skillGroups = [
@@ -124,7 +124,6 @@ const Orbit = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start center', 'end center'] });
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
-  const [showStack, setShowStack] = useState(false);
 
   return (
     <section id="orbit" className="bg-[var(--color-bg)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
@@ -159,60 +158,44 @@ const Orbit = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-4 md:mt-10">
-          <button
-            type="button"
-            onClick={() => setShowStack((v) => !v)}
-            data-cursor-hover
-            className="text-xs font-bold text-[var(--color-muted)] hover:text-white glass rounded-full px-4 py-2 transition-colors"
+        <div className="mt-14 md:mt-20">
+          <div className="text-center mb-8">
+            <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-1">Full tech stack</h3>
+            <p className="text-[var(--color-muted)] text-sm">The tools and technologies behind 5+ years of production work.</p>
+          </div>
+          <motion.div
+            variants={skillContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
           >
-            {showStack ? 'Hide full tech stack ↑' : 'See full tech stack ↓'}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {showStack && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <motion.div
-                variants={skillContainer}
-                initial="hidden"
-                animate="visible"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8"
-              >
-                {skillGroups.map((g) => (
-                  <motion.div key={g.category} variants={skillCard} className="glass rounded-3xl p-5">
-                    <div className="flex items-center gap-2.5 mb-3">
-                      <span
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-base shrink-0"
-                        style={{ background: `radial-gradient(circle at 30% 30%, ${g.color}, ${g.color}55)` }}
-                      >
-                        {g.icon}
-                      </span>
-                      <div className="text-[12px] font-bold text-white leading-tight">{g.category}</div>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {g.skills.map((s) => (
-                        <span
-                          key={s}
-                          data-cursor-hover
-                          className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[var(--color-text-soft)] hover:border-white/30 hover:text-white transition-colors"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
+            {skillGroups.map((g) => (
+              <motion.div key={g.category} variants={skillCard} className="glass rounded-3xl p-5">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-base shrink-0"
+                    style={{ background: `radial-gradient(circle at 30% 30%, ${g.color}, ${g.color}55)` }}
+                  >
+                    {g.icon}
+                  </span>
+                  <div className="text-[12px] font-bold text-white leading-tight">{g.category}</div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {g.skills.map((s) => (
+                    <span
+                      key={s}
+                      data-cursor-hover
+                      className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[var(--color-text-soft)] hover:border-white/30 hover:text-white transition-colors"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

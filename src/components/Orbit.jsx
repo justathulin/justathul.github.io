@@ -1,6 +1,23 @@
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
+
+const skillGroups = [
+  { icon: '☁️', category: 'Cloud & IaC', color: '#f97316', skills: ['AWS EC2', 'EKS', 'S3', 'VPC', 'IAM', 'RDS', 'Lambda', 'ECR', 'CloudWatch', 'KMS', 'Terraform', 'Ansible', 'AWS CLI'] },
+  { icon: '🔁', category: 'CI/CD & GitOps', color: '#22c55e', skills: ['GitHub Actions', 'GitLab CI/CD', 'Bitbucket Pipelines', 'ArgoCD', 'Nexus Repository', 'Blue/Green Deployments', 'Canary Deployments', 'Vulnerability Scanning', 'Quality Gates'] },
+  { icon: '☸️', category: 'Containers & Kubernetes', color: '#fbbf24', skills: ['Docker', 'Kubernetes (EKS + on-prem)', 'Helm', 'HPA', 'RBAC', 'PDB', 'Network Policies', 'Cluster Lifecycle Mgmt'] },
+  { icon: '🐧', category: 'Linux Administration', color: '#fdba74', skills: ['Ubuntu', 'RHEL', 'CentOS', 'Nginx', 'HAProxy', 'DNS', 'iptables', 'LVM', 'systemd', 'TLS/SSL', 'NFS', 'sFTP', 'Firewalls'] },
+  { icon: '📊', category: 'Observability & Monitoring', color: '#f97316', skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Graylog', 'OpenSearch', 'CloudWatch', 'SLI/SLO Alerting'] },
+  { icon: '🗄️', category: 'Databases & Storage', color: '#22c55e', skills: ['MongoDB (Replica Sets)', 'Redis', 'S3 Lifecycle Mgmt', 'ECR/Nexus Pruning'] },
+  { icon: '🔐', category: 'DevSecOps & Security', color: '#fbbf24', skills: ['VAPT Remediation', 'CVE Triage', 'IAM Least-Privilege', 'RBAC', 'Secrets Mgmt', 'VPC Segmentation', 'Pipeline Security Scanning'] },
+  { icon: '⚙️', category: 'Scripting & Automation', color: '#fdba74', skills: ['Bash/Shell', 'Ansible Playbooks', 'systemd Services', 'Auto-Remediation Scripting'] },
+];
+
+const skillContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
+const skillCard = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 220, damping: 20 } },
+};
 
 const stations = [
   {
@@ -107,6 +124,7 @@ const Orbit = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start center', 'end center'] });
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
+  const [showStack, setShowStack] = useState(false);
 
   return (
     <section id="orbit" className="bg-[var(--color-bg)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
@@ -140,6 +158,61 @@ const Orbit = () => {
             ))}
           </div>
         </div>
+
+        <div className="flex justify-center mt-4 md:mt-10">
+          <button
+            type="button"
+            onClick={() => setShowStack((v) => !v)}
+            data-cursor-hover
+            className="text-xs font-bold text-[var(--color-muted)] hover:text-white glass rounded-full px-4 py-2 transition-colors"
+          >
+            {showStack ? 'Hide full tech stack ↑' : 'See full tech stack ↓'}
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {showStack && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <motion.div
+                variants={skillContainer}
+                initial="hidden"
+                animate="visible"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8"
+              >
+                {skillGroups.map((g) => (
+                  <motion.div key={g.category} variants={skillCard} className="glass rounded-3xl p-5">
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-base shrink-0"
+                        style={{ background: `radial-gradient(circle at 30% 30%, ${g.color}, ${g.color}55)` }}
+                      >
+                        {g.icon}
+                      </span>
+                      <div className="text-[12px] font-bold text-white leading-tight">{g.category}</div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {g.skills.map((s) => (
+                        <span
+                          key={s}
+                          data-cursor-hover
+                          className="text-[10px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[var(--color-text-soft)] hover:border-white/30 hover:text-white transition-colors"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

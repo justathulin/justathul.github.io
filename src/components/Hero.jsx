@@ -4,11 +4,12 @@ import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
 import BackgroundBlobs from './BackgroundBlobs';
 import Cube3D from './Cube3D';
+import HeroSceneBoundary from './HeroSceneBoundary';
 import devopsVideo from '../assets/devopsvideo.mp4';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
-const roles = ['Cloud DevOps Engineer', 'Kubernetes Wrangler', 'CI/CD Pipeline Architect', 'Infrastructure Automation Expert'];
+const role = 'Cloud DevOps Engineer';
 const orbitCubes = [44, 36, 50, 38, 42];
 
 const CubeOrbit = () => (
@@ -33,48 +34,7 @@ const CubeOrbit = () => (
   </motion.div>
 );
 
-const useMissionClock = () => {
-  const [elapsed, setElapsed] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setElapsed((e) => e + 1), 1000);
-    return () => clearInterval(id);
-  }, []);
-  const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
-  const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
-  const s = String(elapsed % 60).padStart(2, '0');
-  return `${h}:${m}:${s}`;
-};
-
-const TypedRole = () => {
-  const [index, setIndex] = useState(0);
-  const [text, setText] = useState('');
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = roles[index];
-    const speed = deleting ? 30 : 60;
-    const timeout = setTimeout(() => {
-      if (!deleting) {
-        if (text.length < current.length) setText(current.slice(0, text.length + 1));
-        else setTimeout(() => setDeleting(true), 1300);
-      } else {
-        if (text.length > 0) setText(current.slice(0, text.length - 1));
-        else { setDeleting(false); setIndex((i) => (i + 1) % roles.length); }
-      }
-    }, speed);
-    return () => clearTimeout(timeout);
-  }, [text, deleting, index]);
-
-  return (
-    <span className="gradient-text animate-gradient-shift">
-      {text}
-      <span className="inline-block w-[3px] h-[0.85em] bg-[var(--color-accent-2)] ml-1 align-middle" style={{ animation: 'blink 1s step-end infinite' }} />
-    </span>
-  );
-};
-
 const Hero = () => {
-  const clock = useMissionClock();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(249,115,22,0.15), transparent 80%)`;
@@ -145,8 +105,8 @@ const Hero = () => {
         onClick={toggleSound}
         data-cursor-hover
         aria-label={muted ? 'Unmute background video' : 'Mute background video'}
-        animate={muted ? { scale: [1, 1.06, 1] } : { scale: 1 }}
-        transition={{ duration: 1.6, repeat: muted ? Infinity : 0, ease: 'easeInOut' }}
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
         className={`absolute top-24 right-6 z-30 flex items-center gap-2 pl-3 pr-4 py-2 rounded-full font-bold text-xs transition-colors ${
           muted
             ? 'bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white shadow-[0_8px_24px_rgba(249,115,22,0.45)]'
@@ -181,7 +141,7 @@ const Hero = () => {
             className="inline-flex items-center gap-2 text-xs font-bold text-[var(--color-muted)] mb-6 glass rounded-full px-3.5 py-1.5"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-success)] animate-pulse" />
-            available for work · uptime {clock}
+            available for work
           </motion.div>
 
           <motion.h1
@@ -199,7 +159,7 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="font-display text-xl md:text-2xl font-semibold mb-6 h-9"
           >
-            <TypedRole />
+            <span className="gradient-text">{role}</span>
           </motion.div>
 
           <motion.p
@@ -228,9 +188,11 @@ const Hero = () => {
 
         <div className="relative flex items-center justify-center h-[380px] md:h-[420px]" style={{ perspective: 1200 }}>
           {enable3D ? (
-            <Suspense fallback={<CubeOrbit />}>
-              <HeroScene reduceMotion={reduceMotion} particleCount={900} />
-            </Suspense>
+            <HeroSceneBoundary fallback={<CubeOrbit />}>
+              <Suspense fallback={<CubeOrbit />}>
+                <HeroScene reduceMotion={reduceMotion} particleCount={900} />
+              </Suspense>
+            </HeroSceneBoundary>
           ) : (
             <CubeOrbit />
           )}

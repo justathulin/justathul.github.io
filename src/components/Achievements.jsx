@@ -9,7 +9,7 @@ const achievements = [
   { emoji: '🎯', to: 0, suffix: '', label: 'Rollback incidents', desc: 'Immutable Docker + GitOps/ArgoCD — 12 months straight', color: '#f97316' },
   { emoji: '🔕', to: 40, suffix: '%', label: 'Less on-call noise', desc: 'Bash auto-remediation for OOM, disk, and cert expiry', color: '#fbbf24' },
   { emoji: '🔐', to: 0, suffix: '', label: 'Critical VAPT findings', desc: '12 CVEs fixed across 3 banking clients', color: '#f472b6' },
-  { emoji: '📈', to: 572, suffix: 'K', label: 'Monthly visitors', desc: 'KTUNotes platform at peak — Cloudflare-verified', color: '#22c55e' },
+  { emoji: '📈', to: 500, suffix: 'K+', label: 'Monthly visitors', desc: 'KTUNotes platform at peak — Cloudflare-verified', color: '#22c55e' },
 ];
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };

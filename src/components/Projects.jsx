@@ -10,10 +10,10 @@ const projects = [
     color: '#22c55e',
     title: 'KTUNotes',
     role: 'Founder & Platform Engineer · 2021–2022',
-    desc: 'Solo-built and scaled a high-traffic e-learning platform for KTU B.Tech students. Reached 572,000+ monthly unique visitors (Cloudflare-verified) as sole engineer.',
+    desc: 'Solo-built and scaled a high-traffic e-learning platform for KTU B.Tech students. Reached 500,000+ monthly unique visitors (Cloudflare-verified) as sole engineer.',
     tags: ['AWS EC2', 'Nginx', 'Redis', 'Docker', 'Kubernetes', 'GitOps'],
     stats: [
-      { to: 572, suffix: 'K+', label: 'visitors/mo' },
+      { to: 500, suffix: 'K+', label: 'visitors/mo' },
       { to: 99, suffix: '%+', label: 'uptime' },
       { to: 70, suffix: 'K+', label: 'subscribers' },
     ],

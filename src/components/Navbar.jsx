@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'orbit', label: 'Skills' },
-  { id: 'experience', label: 'Stack' },
   { id: 'projects', label: 'Projects' },
   { id: 'achievements', label: 'Wins' },
   { id: 'certifications', label: 'Badges' },
@@ -30,7 +29,21 @@ const Navbar = ({ onOpenFreelance }) => {
   }, []);
 
   return (
-    <motion.nav
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="nav-scrim"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="lg:hidden fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
+          />
+        )}
+      </AnimatePresence>
+
+      <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -62,17 +75,18 @@ const Navbar = ({ onOpenFreelance }) => {
           <motion.a
             href="/Athul-PS-Resume.pdf"
             download
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
             aria-label="Download resume"
             title="Download resume"
-            className="w-8 h-8 flex items-center justify-center rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+            className="flex items-center gap-1.5 pl-3 pr-3.5 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
+            Resume
           </motion.a>
           <motion.button
             type="button"
@@ -111,7 +125,7 @@ const Navbar = ({ onOpenFreelance }) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="lg:hidden max-w-5xl mx-auto mt-2 glass rounded-3xl overflow-hidden shadow-xl"
+            className="lg:hidden relative z-50 max-w-5xl mx-auto mt-2 bg-[var(--color-bg-2)] border border-[var(--color-border)] rounded-3xl overflow-hidden shadow-xl"
           >
             <div className="flex flex-col px-6 py-5 gap-1">
               {navLinks.map((link) => (
@@ -157,7 +171,8 @@ const Navbar = ({ onOpenFreelance }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 };
 

@@ -92,10 +92,10 @@ const Station = ({ station, pathLength, containerRef }) => {
           </motion.div>
           <h3 className="text-lg font-bold text-white font-display">{station.title}</h3>
         </div>
-        <p className="text-[13px] leading-relaxed text-[#e8dcc8] mb-4">{station.desc}</p>
+        <p className="text-[13px] leading-relaxed text-[var(--color-text-soft)] mb-4">{station.desc}</p>
         <div className="flex flex-wrap gap-1.5">
           {station.tags.map((t) => (
-            <span key={t} className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#f5ede2]">{t}</span>
+            <span key={t} className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[var(--color-text)]">{t}</span>
           ))}
         </div>
       </div>
@@ -109,13 +109,13 @@ const Orbit = () => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
 
   return (
-    <section id="orbit" className="bg-[#0d0a08] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
+    <section id="orbit" className="bg-[var(--color-bg)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-16">
-          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// skills</div>
+          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// skills</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">My orbit of expertise</h2>
-          <p className="text-[#a89787] text-sm md:text-base max-w-lg">Combining Linux mastery, container orchestration, and automation to build resilient systems that never sleep.</p>
+          <p className="text-[var(--color-muted)] text-sm md:text-base max-w-lg">Combining Linux mastery, container orchestration, and automation to build resilient systems that never sleep.</p>
         </motion.div>
 
         <div ref={containerRef} className="relative md:h-[1300px]">
@@ -124,14 +124,14 @@ const Orbit = () => {
             <mask id="orbit-mask">
               <motion.path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="white" strokeWidth="16" style={{ pathLength }} />
             </mask>
-            <path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="#fdba74" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" mask="url(#orbit-mask)" />
+            <path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="var(--color-accent-2)" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" mask="url(#orbit-mask)" />
           </svg>
           <svg className="md:hidden absolute top-0 left-[50%] -translate-x-1/2 w-4 h-full pointer-events-none z-0" viewBox="0 0 4 100" preserveAspectRatio="none">
             <path d="M 2,0 L 2,100" fill="none" stroke="rgba(251, 146, 60,0.18)" strokeWidth="3" strokeDasharray="2 6" vectorEffect="non-scaling-stroke" />
             <mask id="orbit-mask-mobile">
               <motion.path d="M 2,0 L 2,100" fill="none" stroke="white" strokeWidth="3" style={{ pathLength }} vectorEffect="non-scaling-stroke" />
             </mask>
-            <path d="M 2,0 L 2,100" fill="none" stroke="#fdba74" strokeWidth="3" strokeDasharray="2 6" mask="url(#orbit-mask-mobile)" vectorEffect="non-scaling-stroke" />
+            <path d="M 2,0 L 2,100" fill="none" stroke="var(--color-accent-2)" strokeWidth="3" strokeDasharray="2 6" mask="url(#orbit-mask-mobile)" vectorEffect="non-scaling-stroke" />
           </svg>
 
           <div className="flex flex-col gap-6 items-center md:block relative z-10 pt-2 md:pt-0 pb-6 md:pb-0">

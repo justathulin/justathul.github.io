@@ -44,7 +44,7 @@ const CertCard = ({ c, i }) => {
       </motion.div>
       <div>
         <div className="text-sm font-bold text-white leading-snug">{c.name}</div>
-        <div className="text-[11px] text-[#a89787] mt-1">{c.issuer} · {c.year}</div>
+        <div className="text-[11px] text-[var(--color-muted)] mt-1">{c.issuer} · {c.year}</div>
       </div>
     </motion.div>
   );
@@ -52,11 +52,11 @@ const CertCard = ({ c, i }) => {
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="certifications" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">
-          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// badges</div>
+          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// badges</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Badge collection</h2>
         </motion.div>
 

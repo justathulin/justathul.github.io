@@ -45,7 +45,7 @@ const Navbar = () => {
         }`}
       >
         <a href="#home" className="flex items-center gap-2 text-white font-bold text-lg shrink-0">
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#f97316] to-[#fbbf24] flex items-center justify-center text-xs text-white font-black">J</span>
+          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-3)] flex items-center justify-center text-xs text-white font-black">J</span>
           justathul
         </a>
 
@@ -54,21 +54,32 @@ const Navbar = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="px-3.5 py-1.5 text-sm font-semibold text-[#a89787] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
+              className="px-3.5 py-1.5 text-sm font-semibold text-[var(--color-muted)] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <motion.a
-          href="#contact"
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.94 }}
-          className="hidden md:inline-block px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white"
-        >
-          Say hi ✨
-        </motion.a>
+        <div className="hidden md:flex items-center gap-2">
+          <motion.a
+            href="/Athul-PS-Resume.pdf"
+            download
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            className="px-4 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+          >
+            Resume ↓
+          </motion.a>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            className="px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white"
+          >
+            Say hi ✨
+          </motion.a>
+        </div>
 
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-1" aria-label="Toggle navigation">
           <motion.svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" animate={{ rotate: isOpen ? 90 : 0 }}>
@@ -104,9 +115,18 @@ const Navbar = () => {
               ))}
               <motion.a
                 variants={linkVariants}
+                href="/Athul-PS-Resume.pdf"
+                download
+                onClick={() => setIsOpen(false)}
+                className="mt-3 text-center px-4 py-2.5 rounded-full glass text-white font-bold"
+              >
+                Resume ↓
+              </motion.a>
+              <motion.a
+                variants={linkVariants}
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white font-bold"
+                className="mt-2 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold"
               >
                 Say hi ✨
               </motion.a>

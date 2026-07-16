@@ -18,9 +18,9 @@ const Preloader = () => {
           initial={{ y: 0 }}
           exit={{ y: '-100%' }}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 w-full h-screen bg-[#0d0a08] z-[100000] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 w-full h-screen bg-[var(--color-bg)] z-[100000] flex flex-col items-center justify-center overflow-hidden"
         >
-          <div className="absolute w-96 h-96 rounded-full bg-[#f97316] opacity-20 blur-3xl animate-blob" />
+          <div className="absolute w-96 h-96 rounded-full bg-[var(--color-accent)] opacity-20 blur-3xl animate-blob" />
 
           <motion.div
             initial={{ y: 40, opacity: 0, scale: 0.9 }}
@@ -46,7 +46,7 @@ const Preloader = () => {
             className="mt-3 h-[2px] w-32 bg-white/10 rounded-full overflow-hidden"
           >
             <motion.div
-              className="h-full bg-gradient-to-r from-[#f97316] to-[#fbbf24]"
+              className="h-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)]"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
               transition={{ duration: 1.4, ease: 'easeInOut' }}

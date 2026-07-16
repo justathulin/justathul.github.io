@@ -36,7 +36,7 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
       {/* rotating gradient ring */}
       <motion.div
         className="absolute -inset-1.5 rounded-full"
-        style={{ background: 'conic-gradient(from 0deg, #f97316, #fdba74, #fbbf24, #f97316)' }}
+        style={{ background: 'conic-gradient(from 0deg, var(--color-accent), var(--color-accent-2), var(--color-accent-3), var(--color-accent))' }}
         animate={{ rotate: 360 }}
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       />
@@ -59,7 +59,7 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
 
       {/* live status dot */}
       <motion.div
-        className="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-[#22c55e] border-2 border-[#1a120a] flex items-center justify-center"
+        className="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-[var(--color-success)] border-2 border-[var(--color-bg-2)] flex items-center justify-center"
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
       />

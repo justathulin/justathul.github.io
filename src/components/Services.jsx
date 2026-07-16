@@ -62,13 +62,13 @@ const card = {
 
 const Services = () => {
   return (
-    <section id="services" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="services" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14">
-          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// freelance</div>
+          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// freelance</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">Services I offer</h2>
-          <p className="text-[#a89787] text-sm md:text-base max-w-lg">Available for freelance and contract DevOps work — from a single WordPress deploy to full production infrastructure.</p>
+          <p className="text-[var(--color-muted)] text-sm md:text-base max-w-lg">Open to full-time roles — and available for freelance or contract DevOps work on the side, from a single WordPress deploy to full production infrastructure.</p>
         </motion.div>
 
         <motion.div
@@ -93,13 +93,13 @@ const Services = () => {
                 {s.icon}
               </div>
               <h3 className="text-sm font-bold text-white mb-2 leading-snug">{s.title}</h3>
-              <p className="text-[12px] text-[#a89787] leading-relaxed">{s.desc}</p>
+              <p className="text-[12px] text-[var(--color-muted)] leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="flex justify-center">
-          <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(249,115,22,0.35)]">
+          <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(249,115,22,0.35)]">
             Get a quote →
           </MagneticButton>
         </motion.div>

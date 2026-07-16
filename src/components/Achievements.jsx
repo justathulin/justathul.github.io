@@ -20,11 +20,11 @@ const item = {
 
 const Achievements = () => {
   return (
-    <section id="achievements" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="achievements" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14">
-          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// wins</div>
+          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// wins</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Trophy shelf</h2>
         </motion.div>
 
@@ -52,7 +52,7 @@ const Achievements = () => {
                 <div className="text-3xl mb-2">{a.emoji}</div>
                 <CountUp to={a.to} decimals={a.decimals || 0} suffix={a.suffix} className="text-2xl font-bold font-display block mb-1" style={{ color: a.color }} />
                 <div className="text-[12px] font-bold text-white mb-1.5">{a.label}</div>
-                <div className="text-[11px] text-[#a89787] leading-relaxed">{a.desc}</div>
+                <div className="text-[11px] text-[var(--color-muted)] leading-relaxed">{a.desc}</div>
               </motion.div>
             </motion.div>
           ))}

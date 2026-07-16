@@ -24,13 +24,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#0d0a08] py-24 px-6 md:px-12 relative overflow-hidden">
+    <section id="contact" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs />
       <div className="max-w-2xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-8 text-center">
-          <div className="inline-block text-xs font-bold text-[#a89787] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// contact</div>
+          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// contact</div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">Let's talk</h2>
-          <p className="text-[#a89787] text-sm md:text-base">I read every message — promise.</p>
+          <p className="text-[var(--color-muted)] text-sm md:text-base">I read every message — promise.</p>
         </motion.div>
 
         <motion.div
@@ -49,26 +49,26 @@ const Contact = () => {
               <input
                 type="text" id="firstName" value={formData.firstName} onChange={handleChange} required
                 placeholder="First name"
-                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#fdba74] rounded-2xl px-4 py-3 text-white placeholder-[#6b5f52] outline-none transition-colors"
+                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[var(--color-accent-2)] rounded-2xl px-4 py-3 text-white placeholder-[var(--color-text-faint)] outline-none transition-colors"
               />
               <input
                 type="text" id="lastName" value={formData.lastName} onChange={handleChange} required
                 placeholder="Last name"
-                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#fdba74] rounded-2xl px-4 py-3 text-white placeholder-[#6b5f52] outline-none transition-colors"
+                className="bg-white/5 border border-[color:var(--color-border)] focus:border-[var(--color-accent-2)] rounded-2xl px-4 py-3 text-white placeholder-[var(--color-text-faint)] outline-none transition-colors"
               />
             </div>
             <input
               type="email" id="email" value={formData.email} onChange={handleChange} required
               placeholder="you@example.com"
-              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#fdba74] rounded-2xl px-4 py-3 text-white placeholder-[#6b5f52] outline-none transition-colors"
+              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[var(--color-accent-2)] rounded-2xl px-4 py-3 text-white placeholder-[var(--color-text-faint)] outline-none transition-colors"
             />
             <textarea
               id="message" value={formData.message} onChange={handleChange} required rows={4}
               placeholder="What's on your mind?"
-              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[#fdba74] rounded-2xl px-4 py-3 text-white placeholder-[#6b5f52] outline-none transition-colors resize-none"
+              className="bg-white/5 border border-[color:var(--color-border)] focus:border-[var(--color-accent-2)] rounded-2xl px-4 py-3 text-white placeholder-[var(--color-text-faint)] outline-none transition-colors resize-none"
             />
 
-            <label className="flex items-start gap-2.5 text-[12px] text-[#e8dcc8]">
+            <label className="flex items-start gap-2.5 text-[12px] text-[var(--color-text-soft)]">
               <input
                 type="checkbox" id="permission" checked={formData.permission} onChange={handleChange}
                 className="mt-0.5 w-4 h-4" style={{ accentColor: '#f97316' }}
@@ -81,12 +81,12 @@ const Contact = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               data-cursor-hover
-              className="self-start px-7 py-3 rounded-full bg-gradient-to-r from-[#f97316] to-[#fbbf24] text-white font-bold text-sm shadow-[0_8px_24px_rgba(249,115,22,0.35)]"
+              className="self-start px-7 py-3 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold text-sm shadow-[0_8px_24px_rgba(249,115,22,0.35)]"
             >
               Send message
             </motion.button>
 
-            <p className="text-[11px] text-[#6b5f52] mt-1">
+            <p className="text-[11px] text-[var(--color-text-faint)] mt-1">
               routes to hi@justathul.com · +91 96058 85554 · Thrissur, Kerala — open to relocation
             </p>
           </form>

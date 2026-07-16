@@ -10,7 +10,7 @@ const charVariants = {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0d0a08] border-t border-[color:var(--color-border)] pt-16 pb-10 px-6 md:px-12 relative overflow-hidden">
+    <footer className="bg-[var(--color-bg)] border-t border-[color:var(--color-border)] pt-16 pb-10 px-6 md:px-12 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-center mb-4">
           <GlowAvatar size={90} />
@@ -26,7 +26,7 @@ const Footer = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-40px' }}
                 variants={charVariants}
-                className={`inline-block ${c === '.' ? 'text-[#fdba74]' : 'text-white/5'}`}
+                className={`inline-block ${c === '.' ? 'text-[var(--color-accent-2)]' : 'text-white/5'}`}
               >
                 {c}
               </motion.span>
@@ -36,15 +36,15 @@ const Footer = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end border-t border-[color:var(--color-border)] pt-6 text-sm">
           <div className="flex flex-col gap-2">
-            <a href="#contact" className="text-white font-bold hover:text-[#fdba74]">Say hi ✨</a>
-            <p className="text-[#6b5f52] text-xs">© {new Date().getFullYear()} Athul P S · Cloud DevOps Engineer</p>
+            <a href="#contact" className="text-white font-bold hover:text-[var(--color-accent-2)]">Say hi ✨</a>
+            <p className="text-[var(--color-text-faint)] text-xs">© {new Date().getFullYear()} Athul P S · Cloud DevOps Engineer</p>
           </div>
-          <div className="flex flex-col gap-1 md:items-center text-[#e8dcc8]">
-            <a href="mailto:hi@jusathul.com" className="hover:text-[#fdba74]">hi@jusathul.com</a>
+          <div className="flex flex-col gap-1 md:items-center text-[var(--color-text-soft)]">
+            <a href="mailto:hi@justathul.com" className="hover:text-[var(--color-accent-2)]">hi@justathul.com</a>
           </div>
-          <div className="flex flex-col gap-1 md:items-end text-[#e8dcc8]">
-            <a href="https://linkedin.com/in/justathul" target="_blank" rel="noreferrer" className="hover:text-[#fdba74]">LinkedIn</a>
-            <a href="https://careerlook.in" target="_blank" rel="noreferrer" className="hover:text-[#fdba74] mt-1">Careerlook</a>
+          <div className="flex flex-col gap-1 md:items-end text-[var(--color-text-soft)]">
+            <a href="https://linkedin.com/in/justathul" target="_blank" rel="noreferrer" className="hover:text-[var(--color-accent-2)]">LinkedIn</a>
+            <a href="https://careerlook.in" target="_blank" rel="noreferrer" className="hover:text-[var(--color-accent-2)] mt-1">Careerlook</a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Preloader from './components/Preloader'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
@@ -16,12 +16,14 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
+  const [showServices, setShowServices] = useState(false)
+
   return (
     <>
       <Preloader />
       <CustomCursor />
       <ScrollProgress />
-      <Navbar />
+      <Navbar onOpenFreelance={() => setShowServices(true)} />
       <Hero />
       <Marquee />
       <About />
@@ -30,9 +32,9 @@ function App() {
       <Projects />
       <Achievements />
       <Certifications />
-      <Services />
       <Contact />
       <Footer />
+      <Services isOpen={showServices} onClose={() => setShowServices(false)} />
     </>
   )
 }

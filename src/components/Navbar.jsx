@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'orbit', label: 'Skills' },
-  { id: 'experience', label: 'Tech Stack' },
+  { id: 'experience', label: 'Stack' },
   { id: 'projects', label: 'Projects' },
   { id: 'achievements', label: 'Wins' },
   { id: 'certifications', label: 'Badges' },
-  { id: 'services', label: 'Services' },
-  { id: 'contact', label: 'Contact' },
 ];
 
 const drawerVariants = {
@@ -22,7 +19,7 @@ const linkVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 260, damping: 20 } },
 };
 
-const Navbar = () => {
+const Navbar = ({ onOpenFreelance }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -49,39 +46,54 @@ const Navbar = () => {
           justathul
         </a>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="px-3.5 py-1.5 text-sm font-semibold text-[var(--color-muted)] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
+              className="px-2.5 py-1.5 text-[13px] font-semibold text-[var(--color-muted)] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
           <motion.a
             href="/Athul-PS-Resume.pdf"
             download
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            aria-label="Download resume"
+            title="Download resume"
+            className="w-8 h-8 flex items-center justify-center rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </motion.a>
+          <motion.button
+            type="button"
+            onClick={onOpenFreelance}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="px-4 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+            className="px-3.5 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
           >
-            Resume ↓
-          </motion.a>
+            Freelance
+          </motion.button>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white"
+            className="px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white whitespace-nowrap"
           >
             Say hi ✨
           </motion.a>
         </div>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-1" aria-label="Toggle navigation">
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white p-1" aria-label="Toggle navigation">
           <motion.svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" animate={{ rotate: isOpen ? 90 : 0 }}>
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -99,7 +111,7 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="md:hidden max-w-5xl mx-auto mt-2 glass rounded-3xl overflow-hidden shadow-xl"
+            className="lg:hidden max-w-5xl mx-auto mt-2 glass rounded-3xl overflow-hidden shadow-xl"
           >
             <div className="flex flex-col px-6 py-5 gap-1">
               {navLinks.map((link) => (
@@ -122,6 +134,17 @@ const Navbar = () => {
               >
                 Resume ↓
               </motion.a>
+              <motion.button
+                type="button"
+                variants={linkVariants}
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenFreelance();
+                }}
+                className="mt-2 text-center px-4 py-2.5 rounded-full glass text-white font-bold"
+              >
+                Freelance
+              </motion.button>
               <motion.a
                 variants={linkVariants}
                 href="#contact"

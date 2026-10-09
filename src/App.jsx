@@ -23,15 +23,17 @@ function App() {
       <CustomCursor />
       <ScrollProgress />
       <Navbar onOpenFreelance={() => setShowServices(true)} />
-      <Hero />
-      <Marquee />
-      <About />
-      <Orbit />
-      <Projects />
-      <Achievements />
-      <Certifications />
-      <Contact />
-      <Footer />
+      <main className="pt-16 md:pt-0 md:pl-20">
+        <Hero />
+        <Marquee />
+        <About />
+        <Orbit />
+        <Projects />
+        <Achievements />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </main>
       <Services isOpen={showServices} onClose={() => setShowServices(false)} />
     </>
   )

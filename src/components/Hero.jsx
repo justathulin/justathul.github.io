@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
-import GlowAvatar from './GlowAvatar';
 import MagneticButton from './MagneticButton';
 import BackgroundBlobs from './BackgroundBlobs';
 import Cube3D from './Cube3D';
@@ -11,6 +10,13 @@ const HeroScene = lazy(() => import('./HeroScene'));
 
 const role = 'Cloud DevOps Engineer';
 const orbitCubes = [44, 36, 50, 38, 42];
+
+const telemetry = [
+  { label: 'UPTIME', value: '99.9%' },
+  { label: 'EXPERIENCE', value: '5+ YRS' },
+  { label: 'STACK', value: 'K8S / AWS' },
+  { label: 'BASE', value: 'KERALA, IN' },
+];
 
 const CubeOrbit = () => (
   <motion.div
@@ -88,7 +94,7 @@ const Hero = () => {
         mx.set(e.clientX - rect.left);
         my.set(e.clientY - rect.top);
       }}
-      className="relative w-full min-h-screen overflow-hidden bg-[var(--color-bg)] flex items-center pt-28 pb-16"
+      className="relative w-full min-h-screen overflow-hidden bg-[var(--color-bg)] flex items-center pt-10 pb-16"
     >
       <video
         ref={videoRef}
@@ -184,9 +190,23 @@ const Hero = () => {
               Say hello
             </MagneticButton>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="flex flex-wrap gap-px mt-10 glass w-fit overflow-hidden"
+          >
+            {telemetry.map((t) => (
+              <div key={t.label} className="px-4 py-2.5 bg-[var(--color-bg-2)] first:bg-transparent">
+                <div className="font-mono text-[9px] text-[var(--color-text-faint)] tracking-widest mb-0.5">{t.label}</div>
+                <div className="font-mono text-xs font-bold text-[var(--color-accent)]">{t.value}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
-        <div className="relative flex items-center justify-center h-[380px] md:h-[420px]" style={{ perspective: 1200 }}>
+        <div className="relative flex items-center justify-center h-[340px] md:h-[420px]" style={{ perspective: 1200 }}>
           {enable3D ? (
             <HeroSceneBoundary fallback={<CubeOrbit />}>
               <Suspense fallback={<CubeOrbit />}>
@@ -196,8 +216,6 @@ const Hero = () => {
           ) : (
             <CubeOrbit />
           )}
-
-          <GlowAvatar size={220} className="relative z-10" />
         </div>
       </div>
     </section>

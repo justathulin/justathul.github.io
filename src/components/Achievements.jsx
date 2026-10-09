@@ -13,10 +13,10 @@ const achievements = [
   { emoji: '📈', to: 500, suffix: 'K+', label: 'Monthly visitors', desc: 'KTUNotes platform at peak — Cloudflare-verified', color: '#34d399' },
 ];
 
-const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
+const container = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
 const item = {
-  hidden: { opacity: 0, y: 24, scale: 0.9, rotateX: -55 },
-  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, transition: { type: 'spring', stiffness: 200, damping: 18 } },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 220, damping: 20 } },
 };
 
 const Achievements = () => {
@@ -24,8 +24,7 @@ const Achievements = () => {
     <section id="achievements" className="bg-[var(--color-bg-2)] py-24 px-6 md:px-12 relative overflow-hidden">
       <BackgroundBlobs palette={['#f472b6', '#34d399', '#818cf8']} />
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="mb-14 relative">
-          <span className="hidden md:block absolute -top-10 -left-2 text-[9rem] font-display font-bold text-white/[0.03] select-none leading-none pointer-events-none">05</span>
+        <div className="mb-10">
           <Reveal variant="blur">
             <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">[ 05 / WINS ]</div>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Trophy shelf</h2>
@@ -37,27 +36,26 @@ const Achievements = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-4"
-          style={{ perspective: 1000 }}
+          className="glass flex flex-wrap"
         >
           {achievements.map((a, i) => (
             <motion.div
               key={a.label}
               variants={item}
-              whileHover={{ y: -6, rotateX: -4, rotateY: 4, scale: 1.03 }}
-              style={{ transformPerspective: 800 }}
-              className="glass rounded-3xl p-5 relative overflow-hidden"
+              className="flex-1 min-w-[160px] px-6 py-7 relative border-[color:var(--color-border)]"
+              style={{
+                borderTopWidth: 2,
+                borderTopColor: a.color,
+                borderLeftWidth: i % 3 === 0 ? 0 : 1,
+                borderLeftStyle: 'solid',
+              }}
             >
-              <motion.div
-                animate={{ rotateX: [2, -2, 2], rotateY: [-3, 3, -3] }}
-                transition={{ duration: 4.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
-                style={{ transformPerspective: 800 }}
-              >
-                <div className="text-3xl mb-2">{a.emoji}</div>
-                <CountUp to={a.to} decimals={a.decimals || 0} suffix={a.suffix} className="text-2xl font-bold font-display block mb-1" style={{ color: a.color }} />
-                <div className="text-[12px] font-bold text-white mb-1.5">{a.label}</div>
-                <div className="text-[11px] text-[var(--color-muted)] leading-relaxed">{a.desc}</div>
-              </motion.div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xl">{a.emoji}</span>
+                <CountUp to={a.to} decimals={a.decimals || 0} suffix={a.suffix} className="text-2xl font-bold font-mono" style={{ color: a.color }} />
+              </div>
+              <div className="text-[12px] font-bold text-white mb-1.5">{a.label}</div>
+              <div className="text-[11px] text-[var(--color-muted)] leading-relaxed">{a.desc}</div>
             </motion.div>
           ))}
         </motion.div>

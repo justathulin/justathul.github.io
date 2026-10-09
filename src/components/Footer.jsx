@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import GlowAvatar from './GlowAvatar';
 
 const nameChars = 'justathul.'.split('');
 const charVariants = {
@@ -12,10 +11,6 @@ const Footer = () => {
   return (
     <footer className="bg-[var(--color-bg)] border-t border-[color:var(--color-border)] pt-16 pb-10 px-6 md:px-12 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-center mb-4">
-          <GlowAvatar size={90} />
-        </div>
-
         <div className="w-full flex justify-center items-center overflow-hidden mb-6">
           <h2 className="text-[8.5vw] md:text-[5.8vw] leading-none font-display font-bold tracking-tight select-none w-full text-center flex justify-center">
             {nameChars.map((c, i) => (

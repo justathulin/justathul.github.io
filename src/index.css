@@ -83,11 +83,11 @@ h1, h2, h3, .font-display {
 }
 
 .glass {
-  background: var(--color-panel);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)), var(--color-bg-2);
   border: 1px solid var(--color-border);
-  border-radius: 0.875rem;
+  border-top: 1px solid var(--color-border-hover);
+  border-radius: 0.375rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .panel-corners {
@@ -108,14 +108,12 @@ h1, h2, h3, .font-display {
   left: -1px;
   border-top: 2px solid;
   border-left: 2px solid;
-  border-top-left-radius: 0.875rem;
 }
 .panel-corners::after {
   bottom: -1px;
   right: -1px;
   border-bottom: 2px solid;
   border-right: 2px solid;
-  border-bottom-right-radius: 0.875rem;
 }
 
 .grid-paper {

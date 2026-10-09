@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent, useMotionValue, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
+import Reveal from './Reveal';
 
 const skillGroups = [
   { icon: '☁️', category: 'Cloud & IaC', color: '#f97316', skills: ['AWS EC2', 'EKS', 'S3', 'VPC', 'IAM', 'RDS', 'Lambda', 'ECR', 'CloudWatch', 'KMS', 'Terraform', 'Ansible', 'AWS CLI'] },
@@ -126,14 +127,20 @@ const Orbit = () => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
 
   return (
-    <section id="orbit" className="bg-[var(--color-bg)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs />
+    <section id="orbit" className="bg-[var(--color-bg-2)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
+      <BackgroundBlobs palette={['#22c55e', '#f97316', '#fbbf24']} />
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-16">
-          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// skills</div>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">My orbit of expertise</h2>
-          <p className="text-[var(--color-muted)] text-sm md:text-base max-w-lg">Combining Linux mastery, container orchestration, and automation to build resilient systems that never sleep.</p>
-        </motion.div>
+        <div className="mb-16 text-center">
+          <Reveal variant="scale">
+            <div className="inline-block text-xs font-bold text-[var(--color-success)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1" style={{ borderColor: 'rgba(34,197,94,0.3)' }}>// skills</div>
+          </Reveal>
+          <Reveal variant="clip" delay={0.1}>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">My orbit of expertise</h2>
+          </Reveal>
+          <Reveal variant="blur" delay={0.2}>
+            <p className="text-[var(--color-muted)] text-sm md:text-base max-w-lg mx-auto">Combining Linux mastery, container orchestration, and automation to build resilient systems that never sleep.</p>
+          </Reveal>
+        </div>
 
         <div ref={containerRef} className="relative md:h-[1300px]">
           <svg className="hidden md:block absolute top-0 left-0 w-full h-[1300px] pointer-events-none z-0" viewBox="0 0 1000 1300" preserveAspectRatio="none">

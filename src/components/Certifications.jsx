@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import BackgroundBlobs from './BackgroundBlobs';
+import Reveal from './Reveal';
 
 const certifications = [
   { emoji: '🧱', name: 'HashiCorp Certified: Terraform Associate (004)', issuer: 'HashiCorp', year: '2025', color: '#fbbf24' },
@@ -53,14 +54,16 @@ const CertCard = ({ c, i }) => {
 const Certifications = () => {
   return (
     <section id="certifications" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs />
+      <BackgroundBlobs palette={['#fbbf24', '#fdba74', '#f97316']} />
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">
-          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// badges</div>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Badge collection</h2>
-        </motion.div>
+        <div className="mb-12 text-center">
+          <Reveal variant="scale">
+            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// badges</div>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Badge collection</h2>
+          </Reveal>
+        </div>
 
-        <div className="flex flex-wrap gap-6" style={{ perspective: 1000 }}>
+        <div className="flex flex-wrap justify-center gap-6" style={{ perspective: 1000 }}>
           {certifications.map((c, i) => (
             <CertCard key={c.name} c={c} i={i} />
           ))}

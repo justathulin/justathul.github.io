@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import CountUp from './CountUp';
 import BackgroundBlobs from './BackgroundBlobs';
+import Reveal from './Reveal';
 
 const projects = [
   {
@@ -32,7 +33,7 @@ const projects = [
   },
 ];
 
-const TiltCard = ({ project }) => {
+const TiltCard = ({ project, featured }) => {
   const ref = useRef(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
@@ -52,14 +53,15 @@ const TiltCard = ({ project }) => {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformPerspective: 800 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.92, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6 }}
       whileHover={{ y: -6 }}
-      className="glass rounded-3xl overflow-hidden transition-colors duration-300"
+      className={`glass rounded-3xl overflow-hidden transition-colors duration-300 relative ${featured ? 'md:col-span-2' : ''}`}
       data-cursor-hover
     >
+      <div className="h-1.5 w-full" style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }} />
       <div className="p-6 md:p-7">
         <div className="flex items-center justify-between mb-4">
           <motion.div
@@ -116,17 +118,21 @@ const TiltCard = ({ project }) => {
 const Projects = () => {
   return (
     <section id="projects" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs />
+      <BackgroundBlobs palette={['#22c55e', '#fbbf24', '#f97316']} />
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12">
-          <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// missions</div>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">Things I've launched</h2>
-          <p className="text-[var(--color-muted)] text-sm md:text-base">Real traffic, real stakes, real 3am pages.</p>
-        </motion.div>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+          <Reveal variant="slide" direction="left">
+            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// missions</div>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Things I've launched</h2>
+          </Reveal>
+          <Reveal variant="slide" direction="right" delay={0.1}>
+            <p className="text-[var(--color-muted)] text-sm md:text-base md:text-right md:max-w-xs">Real traffic, real stakes, real 3am pages.</p>
+          </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((p) => (
-            <TiltCard key={p.title} project={p} />
+          {projects.map((p, i) => (
+            <TiltCard key={p.title} project={p} featured={i === 0} />
           ))}
         </div>
       </div>

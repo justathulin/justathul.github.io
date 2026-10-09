@@ -7,10 +7,10 @@ import * as THREE from 'three';
 // commit -> build -> test -> deploy stages, each marked with an icon badge.
 // This is the actual DevOps concept, not a decorative abstract shape.
 const STAGES = [
-  { t: 0.06, icon: '📝', label: 'Commit', color: '#fdba74' },
-  { t: 0.32, icon: '🔨', label: 'Build', color: '#f97316' },
+  { t: 0.06, icon: '📝', label: 'Commit', color: '#818cf8' },
+  { t: 0.32, icon: '🔨', label: 'Build', color: '#2dd4bf' },
   { t: 0.58, icon: '🧪', label: 'Test', color: '#fbbf24' },
-  { t: 0.86, icon: '🚀', label: 'Deploy', color: '#22c55e' },
+  { t: 0.86, icon: '🚀', label: 'Deploy', color: '#34d399' },
 ];
 
 const CURVE = new THREE.CatmullRomCurve3([
@@ -40,7 +40,7 @@ const ParticleField = ({ count = 600 }) => {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial color="#fdba74" size={0.03} transparent opacity={0.35} depthWrite={false} sizeAttenuation />
+      <pointsMaterial color="#2dd4bf" size={0.03} transparent opacity={0.35} depthWrite={false} sizeAttenuation />
     </points>
   );
 };
@@ -48,7 +48,7 @@ const ParticleField = ({ count = 600 }) => {
 const PipelineTube = () => (
   <mesh>
     <tubeGeometry args={[CURVE, 140, 0.05, 10, false]} />
-    <meshStandardMaterial color="#f97316" emissive="#f97316" emissiveIntensity={0.5} roughness={0.3} metalness={0.4} transparent opacity={0.55} />
+    <meshStandardMaterial color="#2dd4bf" emissive="#2dd4bf" emissiveIntensity={0.5} roughness={0.3} metalness={0.4} transparent opacity={0.55} />
   </mesh>
 );
 
@@ -64,7 +64,7 @@ const Packet = ({ offset, speed, reduceMotion }) => {
   return (
     <mesh ref={ref} position={start}>
       <sphereGeometry args={[0.075, 10, 10]} />
-      <meshBasicMaterial color="#ffe8c9" />
+      <meshBasicMaterial color="#d9fff9" />
     </mesh>
   );
 };
@@ -118,8 +118,8 @@ const HeroScene = ({ reduceMotion = false, particleCount = 600 }) => (
     style={{ position: 'absolute', inset: 0 }}
   >
     <ambientLight intensity={0.55} />
-    <pointLight position={[4, 3, 4]} intensity={1.4} color="#fdba74" />
-    <pointLight position={[-4, -2, -3]} intensity={0.6} color="#f97316" />
+    <pointLight position={[4, 3, 4]} intensity={1.4} color="#818cf8" />
+    <pointLight position={[-4, -2, -3]} intensity={0.6} color="#2dd4bf" />
 
     <Pipeline reduceMotion={reduceMotion} />
     <ParticleField count={particleCount} />

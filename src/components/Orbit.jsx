@@ -4,14 +4,14 @@ import BackgroundBlobs from './BackgroundBlobs';
 import Reveal from './Reveal';
 
 const skillGroups = [
-  { icon: '☁️', category: 'Cloud & IaC', color: '#f97316', skills: ['AWS EC2', 'EKS', 'S3', 'VPC', 'IAM', 'RDS', 'Lambda', 'ECR', 'CloudWatch', 'KMS', 'Terraform', 'Ansible', 'AWS CLI'] },
-  { icon: '🔁', category: 'CI/CD & GitOps', color: '#22c55e', skills: ['GitHub Actions', 'GitLab CI/CD', 'Bitbucket Pipelines', 'ArgoCD', 'Nexus Repository', 'Blue/Green Deployments', 'Canary Deployments', 'Vulnerability Scanning', 'Quality Gates'] },
+  { icon: '☁️', category: 'Cloud & IaC', color: '#2dd4bf', skills: ['AWS EC2', 'EKS', 'S3', 'VPC', 'IAM', 'RDS', 'Lambda', 'ECR', 'CloudWatch', 'KMS', 'Terraform', 'Ansible', 'AWS CLI'] },
+  { icon: '🔁', category: 'CI/CD & GitOps', color: '#34d399', skills: ['GitHub Actions', 'GitLab CI/CD', 'Bitbucket Pipelines', 'ArgoCD', 'Nexus Repository', 'Blue/Green Deployments', 'Canary Deployments', 'Vulnerability Scanning', 'Quality Gates'] },
   { icon: '☸️', category: 'Containers & Kubernetes', color: '#fbbf24', skills: ['Docker', 'Kubernetes (EKS + on-prem)', 'Helm', 'HPA', 'RBAC', 'PDB', 'Network Policies', 'Cluster Lifecycle Mgmt'] },
-  { icon: '🐧', category: 'Linux Administration', color: '#fdba74', skills: ['Ubuntu', 'RHEL', 'CentOS', 'Nginx', 'HAProxy', 'DNS', 'iptables', 'LVM', 'systemd', 'TLS/SSL', 'NFS', 'sFTP', 'Firewalls'] },
-  { icon: '📊', category: 'Observability & Monitoring', color: '#f97316', skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Graylog', 'OpenSearch', 'CloudWatch', 'SLI/SLO Alerting'] },
-  { icon: '🗄️', category: 'Databases & Storage', color: '#22c55e', skills: ['MongoDB (Replica Sets)', 'Redis', 'S3 Lifecycle Mgmt', 'ECR/Nexus Pruning'] },
+  { icon: '🐧', category: 'Linux Administration', color: '#818cf8', skills: ['Ubuntu', 'RHEL', 'CentOS', 'Nginx', 'HAProxy', 'DNS', 'iptables', 'LVM', 'systemd', 'TLS/SSL', 'NFS', 'sFTP', 'Firewalls'] },
+  { icon: '📊', category: 'Observability & Monitoring', color: '#2dd4bf', skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Graylog', 'OpenSearch', 'CloudWatch', 'SLI/SLO Alerting'] },
+  { icon: '🗄️', category: 'Databases & Storage', color: '#34d399', skills: ['MongoDB (Replica Sets)', 'Redis', 'S3 Lifecycle Mgmt', 'ECR/Nexus Pruning'] },
   { icon: '🔐', category: 'DevSecOps & Security', color: '#fbbf24', skills: ['VAPT Remediation', 'CVE Triage', 'IAM Least-Privilege', 'RBAC', 'Secrets Mgmt', 'VPC Segmentation', 'Pipeline Security Scanning'] },
-  { icon: '⚙️', category: 'Scripting & Automation', color: '#fdba74', skills: ['Bash/Shell', 'Ansible Playbooks', 'systemd Services', 'Auto-Remediation Scripting'] },
+  { icon: '⚙️', category: 'Scripting & Automation', color: '#818cf8', skills: ['Bash/Shell', 'Ansible Playbooks', 'systemd Services', 'Auto-Remediation Scripting'] },
 ];
 
 const skillContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
@@ -26,7 +26,7 @@ const stations = [
     title: 'Cloud & Infrastructure',
     desc: 'Provisioning and managing AWS (EC2, EKS, S3, VPC, IAM, RDS, Lambda) with Terraform for multi-environment IaC — cost-controlled, compliance-tagged, and audit-ready.',
     tags: ['AWS', 'Terraform', 'Ansible'],
-    color: '#fdba74',
+    color: '#818cf8',
     className: 'md:absolute md:top-[10px] md:right-[5%] lg:right-[10%]',
   },
   {
@@ -34,7 +34,7 @@ const stations = [
     title: 'CI/CD & GitOps',
     desc: 'Building immutable Docker pipelines across GitHub Actions, GitLab CI/CD, Bitbucket, and ArgoCD for 15+ microservices — zero rollback incidents over 12 months.',
     tags: ['GitHub Actions', 'GitLab CI', 'ArgoCD'],
-    color: '#22c55e',
+    color: '#34d399',
     className: 'md:absolute md:top-[440px] md:left-[5%] lg:left-[10%]',
   },
   {
@@ -42,7 +42,7 @@ const stations = [
     title: 'Kubernetes & Containers',
     desc: 'Operating production Kubernetes clusters — on-prem air-gapped and EKS — with HPA, RBAC, PDB, Helm, and network policies. 99.9%+ SLA across 5+ deployments.',
     tags: ['Kubernetes', 'Docker', 'Helm'],
-    color: '#f97316',
+    color: '#2dd4bf',
     className: 'md:absolute md:top-[700px] md:right-[5%] lg:right-[15%]',
   },
   {
@@ -128,11 +128,11 @@ const Orbit = () => {
 
   return (
     <section id="orbit" className="bg-[var(--color-bg-2)] pt-24 pb-20 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs palette={['#22c55e', '#f97316', '#fbbf24']} />
+      <BackgroundBlobs palette={['#34d399', '#2dd4bf', '#fbbf24']} />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-16 text-center">
           <Reveal variant="scale">
-            <div className="inline-block text-xs font-bold text-[var(--color-success)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1" style={{ borderColor: 'rgba(34,197,94,0.3)' }}>// skills</div>
+            <div className="inline-block text-xs font-bold font-mono text-[var(--color-success)] uppercase tracking-widest mb-3 glass px-3 py-1" style={{ borderColor: 'rgba(52,211,153,0.3)' }}>[ 03 / SKILLS ]</div>
           </Reveal>
           <Reveal variant="clip" delay={0.1}>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">My orbit of expertise</h2>
@@ -144,14 +144,14 @@ const Orbit = () => {
 
         <div ref={containerRef} className="relative md:h-[1300px]">
           <svg className="hidden md:block absolute top-0 left-0 w-full h-[1300px] pointer-events-none z-0" viewBox="0 0 1000 1300" preserveAspectRatio="none">
-            <path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="rgba(251, 146, 60,0.18)" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" />
+            <path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="rgba(45,212,191,0.18)" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" />
             <mask id="orbit-mask">
               <motion.path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="white" strokeWidth="16" style={{ pathLength }} />
             </mask>
             <path d="M 650,150 C 400,250 200,350 300,550 C 400,750 750,700 700,900 C 650,1100 400,1100 300,1150" fill="none" stroke="var(--color-accent-2)" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" mask="url(#orbit-mask)" />
           </svg>
           <svg className="md:hidden absolute top-0 left-[50%] -translate-x-1/2 w-4 h-full pointer-events-none z-0" viewBox="0 0 4 100" preserveAspectRatio="none">
-            <path d="M 2,0 L 2,100" fill="none" stroke="rgba(251, 146, 60,0.18)" strokeWidth="3" strokeDasharray="2 6" vectorEffect="non-scaling-stroke" />
+            <path d="M 2,0 L 2,100" fill="none" stroke="rgba(45,212,191,0.18)" strokeWidth="3" strokeDasharray="2 6" vectorEffect="non-scaling-stroke" />
             <mask id="orbit-mask-mobile">
               <motion.path d="M 2,0 L 2,100" fill="none" stroke="white" strokeWidth="3" style={{ pathLength }} vectorEffect="non-scaling-stroke" />
             </mask>

@@ -5,12 +5,12 @@ import BackgroundBlobs from './BackgroundBlobs';
 import Reveal from './Reveal';
 
 const achievements = [
-  { emoji: '🛡️', to: 99.9, decimals: 1, suffix: '%', label: 'Uptime SLA', desc: 'Sustained across 5+ enterprise Kubernetes deployments', color: '#22c55e' },
-  { emoji: '⚡', to: 60, suffix: '%', label: 'Faster incident detection', desc: 'Cut from 18 min to 7 min via Prometheus/Grafana', color: '#fdba74' },
-  { emoji: '🎯', to: 0, suffix: '', label: 'Rollback incidents', desc: 'Immutable Docker + GitOps/ArgoCD — 12 months straight', color: '#f97316' },
+  { emoji: '🛡️', to: 99.9, decimals: 1, suffix: '%', label: 'Uptime SLA', desc: 'Sustained across 5+ enterprise Kubernetes deployments', color: '#34d399' },
+  { emoji: '⚡', to: 60, suffix: '%', label: 'Faster incident detection', desc: 'Cut from 18 min to 7 min via Prometheus/Grafana', color: '#818cf8' },
+  { emoji: '🎯', to: 0, suffix: '', label: 'Rollback incidents', desc: 'Immutable Docker + GitOps/ArgoCD — 12 months straight', color: '#2dd4bf' },
   { emoji: '🔕', to: 40, suffix: '%', label: 'Less on-call noise', desc: 'Bash auto-remediation for OOM, disk, and cert expiry', color: '#fbbf24' },
   { emoji: '🔐', to: 0, suffix: '', label: 'Critical VAPT findings', desc: '12 CVEs fixed across 3 banking clients', color: '#f472b6' },
-  { emoji: '📈', to: 500, suffix: 'K+', label: 'Monthly visitors', desc: 'KTUNotes platform at peak — Cloudflare-verified', color: '#22c55e' },
+  { emoji: '📈', to: 500, suffix: 'K+', label: 'Monthly visitors', desc: 'KTUNotes platform at peak — Cloudflare-verified', color: '#34d399' },
 ];
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -22,12 +22,12 @@ const item = {
 const Achievements = () => {
   return (
     <section id="achievements" className="bg-[var(--color-bg-2)] py-24 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs palette={['#f472b6', '#22c55e', '#fdba74']} />
+      <BackgroundBlobs palette={['#f472b6', '#34d399', '#818cf8']} />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-14 relative">
-          <span className="hidden md:block absolute -top-10 -left-2 text-[9rem] font-display font-bold text-white/[0.03] select-none leading-none pointer-events-none">06</span>
+          <span className="hidden md:block absolute -top-10 -left-2 text-[9rem] font-display font-bold text-white/[0.03] select-none leading-none pointer-events-none">05</span>
           <Reveal variant="blur">
-            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// wins</div>
+            <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">[ 05 / WINS ]</div>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Trophy shelf</h2>
           </Reveal>
         </div>

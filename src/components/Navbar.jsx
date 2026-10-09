@@ -50,12 +50,12 @@ const Navbar = ({ onOpenFreelance }) => {
       className="fixed top-4 left-0 w-full z-50 px-4 font-display"
     >
       <div
-        className={`max-w-5xl mx-auto flex justify-between items-center rounded-full px-5 py-2.5 transition-all duration-500 ${
+        className={`max-w-5xl mx-auto flex justify-between items-center rounded-xl px-5 py-2.5 transition-all duration-500 ${
           isScrolled || isOpen ? 'glass shadow-[0_8px_30px_rgba(0,0,0,0.3)]' : 'bg-white/[0.03] border border-transparent'
         }`}
       >
         <a href="#home" className="flex items-center gap-2 text-white font-bold text-lg shrink-0">
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-3)] flex items-center justify-center text-xs text-white font-black">J</span>
+          <span className="w-7 h-7 rounded-md bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-3)] flex items-center justify-center text-xs text-black font-black">J</span>
           justathul
         </a>
 
@@ -64,7 +64,7 @@ const Navbar = ({ onOpenFreelance }) => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="px-2.5 py-1.5 text-[13px] font-semibold text-[var(--color-muted)] hover:text-white hover:bg-white/10 rounded-full transition-colors duration-200"
+              className="px-2.5 py-1.5 text-[13px] font-semibold text-[var(--color-muted)] hover:text-white hover:bg-white/10 rounded-md transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -80,7 +80,7 @@ const Navbar = ({ onOpenFreelance }) => {
             whileTap={{ scale: 0.92 }}
             aria-label="LinkedIn profile"
             title="LinkedIn profile"
-            className="w-8 h-8 flex items-center justify-center rounded-full glass text-white hover:border-[var(--color-border-hover)]"
+            className="w-8 h-8 flex items-center justify-center rounded-md glass text-white hover:border-[var(--color-border-hover)]"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z" />
@@ -93,7 +93,7 @@ const Navbar = ({ onOpenFreelance }) => {
             whileTap={{ scale: 0.94 }}
             aria-label="Download resume"
             title="Download resume"
-            className="flex items-center gap-1.5 pl-3 pr-3.5 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
+            className="flex items-center gap-1.5 pl-3 pr-3.5 py-1.5 text-sm font-bold rounded-md glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -107,7 +107,7 @@ const Navbar = ({ onOpenFreelance }) => {
             onClick={onOpenFreelance}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="px-3.5 py-1.5 text-sm font-bold rounded-full glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
+            className="px-3.5 py-1.5 text-sm font-bold rounded-md glass text-white hover:border-[var(--color-border-hover)] whitespace-nowrap"
           >
             Freelance
           </motion.button>
@@ -115,7 +115,7 @@ const Navbar = ({ onOpenFreelance }) => {
             href="#contact"
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="px-4 py-1.5 text-sm font-bold rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white whitespace-nowrap"
+            className="px-4 py-1.5 text-sm font-bold rounded-md bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-black whitespace-nowrap"
           >
             Say hi ✨
           </motion.a>
@@ -139,7 +139,7 @@ const Navbar = ({ onOpenFreelance }) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="lg:hidden relative z-50 max-w-5xl mx-auto mt-2 bg-[var(--color-bg-2)] border border-[var(--color-border)] rounded-3xl overflow-hidden shadow-xl"
+            className="lg:hidden relative z-50 max-w-5xl mx-auto mt-2 bg-[var(--color-bg-2)] border border-[var(--color-border)] rounded-xl overflow-hidden shadow-xl"
           >
             <div className="flex flex-col px-6 py-5 gap-1">
               {navLinks.map((link) => (
@@ -171,7 +171,7 @@ const Navbar = ({ onOpenFreelance }) => {
                 href="/Athul-PS-Resume.pdf"
                 download
                 onClick={() => setIsOpen(false)}
-                className="mt-3 text-center px-4 py-2.5 rounded-full glass text-white font-bold"
+                className="mt-3 text-center px-4 py-2.5 rounded-lg glass text-white font-bold"
               >
                 Resume ↓
               </motion.a>
@@ -182,7 +182,7 @@ const Navbar = ({ onOpenFreelance }) => {
                   setIsOpen(false);
                   onOpenFreelance();
                 }}
-                className="mt-2 text-center px-4 py-2.5 rounded-full glass text-white font-bold"
+                className="mt-2 text-center px-4 py-2.5 rounded-lg glass text-white font-bold"
               >
                 Freelance
               </motion.button>
@@ -190,7 +190,7 @@ const Navbar = ({ onOpenFreelance }) => {
                 variants={linkVariants}
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 text-center px-4 py-2.5 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold"
+                className="mt-2 text-center px-4 py-2.5 rounded-lg bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-black font-bold"
               >
                 Say hi ✨
               </motion.a>

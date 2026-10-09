@@ -42,14 +42,16 @@ const CustomCursor = () => {
         animate={{ scale: isDown ? 0.6 : 1 }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
       />
-      {/* Ring */}
+      {/* Ring — snaps into a square target-lock bracket over interactive elements */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-white/40 pointer-events-none z-[99998] mix-blend-difference"
+        className="fixed top-0 left-0 border border-white/40 pointer-events-none z-[99998] mix-blend-difference"
         style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
         animate={{
-          width: isPointer ? 56 : 32,
-          height: isPointer ? 56 : 32,
+          width: isPointer ? 48 : 32,
+          height: isPointer ? 48 : 32,
           opacity: isPointer ? 1 : 0.6,
+          borderRadius: isPointer ? 6 : 999,
+          rotate: isPointer ? 45 : 0,
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       />

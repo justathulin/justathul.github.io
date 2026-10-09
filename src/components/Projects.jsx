@@ -8,7 +8,7 @@ const projects = [
   {
     emoji: '📚',
     status: 'LIVE',
-    color: '#22c55e',
+    color: '#34d399',
     title: 'KTUNotes',
     role: 'Founder & Platform Engineer · 2021–2022',
     desc: 'Solo-built and scaled a high-traffic e-learning platform for KTU B.Tech students. Reached 500,000+ monthly unique visitors (Cloudflare-verified) as sole engineer.',
@@ -118,11 +118,11 @@ const TiltCard = ({ project, featured }) => {
 const Projects = () => {
   return (
     <section id="projects" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs palette={['#22c55e', '#fbbf24', '#f97316']} />
+      <BackgroundBlobs palette={['#34d399', '#fbbf24', '#2dd4bf']} />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <Reveal variant="slide" direction="left">
-            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// missions</div>
+            <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">[ 04 / PROJECTS ]</div>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Things I've launched</h2>
           </Reveal>
           <Reveal variant="slide" direction="right" delay={0.1}>

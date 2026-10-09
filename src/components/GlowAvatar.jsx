@@ -28,7 +28,7 @@ const GlowAvatar = ({ size = 260, className = '' }) => {
       {/* pulsing glow */}
       <motion.div
         className="absolute -inset-4 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.45), transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(45,212,191,0.45), transparent 70%)' }}
         animate={{ opacity: [0.5, 0.9, 0.5], scale: [0.95, 1.05, 0.95] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
       />

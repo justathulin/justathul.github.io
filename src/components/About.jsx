@@ -5,10 +5,10 @@ import GlowAvatar from './GlowAvatar';
 import BackgroundBlobs from './BackgroundBlobs';
 
 const skillPlanets = [
-  { icon: '☸️', label: 'Kubernetes', color: '#f97316' },
-  { icon: '☁️', label: 'AWS', color: '#fdba74' },
+  { icon: '☸️', label: 'Kubernetes', color: '#2dd4bf' },
+  { icon: '☁️', label: 'AWS', color: '#818cf8' },
   { icon: '🧱', label: 'Terraform', color: '#fbbf24' },
-  { icon: '🔁', label: 'ArgoCD', color: '#22c55e' },
+  { icon: '🔁', label: 'ArgoCD', color: '#34d399' },
   { icon: '📊', label: 'Prometheus', color: '#f472b6' },
 ];
 
@@ -26,8 +26,8 @@ const About = () => {
 
         <div>
           <Reveal delay={0.1}>
-            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">
-              // about me
+            <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">
+              [ 02 / ABOUT ]
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">A little about me</h2>
           </Reveal>

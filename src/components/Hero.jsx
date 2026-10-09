@@ -37,7 +37,7 @@ const CubeOrbit = () => (
 const Hero = () => {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(249,115,22,0.15), transparent 80%)`;
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(45,212,191,0.15), transparent 80%)`;
 
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
@@ -107,9 +107,9 @@ const Hero = () => {
         aria-label={muted ? 'Unmute background video' : 'Mute background video'}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
-        className={`absolute top-24 right-6 z-30 flex items-center gap-2 pl-3 pr-4 py-2 rounded-full font-bold text-xs transition-colors ${
+        className={`absolute top-24 right-6 z-30 flex items-center gap-2 pl-3 pr-4 py-2 rounded-lg font-bold text-xs transition-colors ${
           muted
-            ? 'bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white shadow-[0_8px_24px_rgba(249,115,22,0.45)]'
+            ? 'bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-black shadow-[0_8px_24px_rgba(45,212,191,0.45)]'
             : 'glass text-white/90 hover:text-white'
         }`}
       >
@@ -177,10 +177,10 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="flex flex-row items-center gap-4 flex-wrap"
           >
-            <MagneticButton href="#projects" data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(249,115,22,0.35)]">
+            <MagneticButton href="#projects" data-cursor-hover className="px-6 py-3 text-sm rounded-lg bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-black font-bold inline-block text-center shadow-[0_8px_30px_rgba(45,212,191,0.35)]">
               See my work →
             </MagneticButton>
-            <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-full glass text-white font-bold inline-block text-center hover:border-[var(--color-accent-2)]">
+            <MagneticButton href="#contact" data-cursor-hover className="px-6 py-3 text-sm rounded-lg glass text-white font-bold inline-block text-center hover:border-[var(--color-accent-2)]">
               Say hello
             </MagneticButton>
           </motion.div>

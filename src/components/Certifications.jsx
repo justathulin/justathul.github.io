@@ -5,7 +5,7 @@ import Reveal from './Reveal';
 
 const certifications = [
   { emoji: '🧱', name: 'HashiCorp Certified: Terraform Associate (004)', issuer: 'HashiCorp', year: '2025', color: '#fbbf24' },
-  { emoji: '☁️', name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', year: '2022', color: '#fdba74' },
+  { emoji: '☁️', name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', year: '2022', color: '#818cf8' },
 ];
 
 const CertCard = ({ c, i }) => {
@@ -54,11 +54,11 @@ const CertCard = ({ c, i }) => {
 const Certifications = () => {
   return (
     <section id="certifications" className="bg-[var(--color-bg)] py-24 px-6 md:px-12 relative overflow-hidden">
-      <BackgroundBlobs palette={['#fbbf24', '#fdba74', '#f97316']} />
+      <BackgroundBlobs palette={['#fbbf24', '#818cf8', '#2dd4bf']} />
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="mb-12 text-center">
           <Reveal variant="scale">
-            <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// badges</div>
+            <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">[ 06 / BADGES ]</div>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white">Badge collection</h2>
           </Reveal>
         </div>

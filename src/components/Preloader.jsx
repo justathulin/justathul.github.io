@@ -22,9 +22,9 @@ const Preloader = () => {
           initial={{ y: 0 }}
           exit={{ y: '-100%' }}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 w-full h-screen bg-[var(--color-bg)] z-[100000] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 w-full h-screen bg-[var(--color-bg)] z-[100000] flex flex-col items-center justify-center overflow-hidden grid-paper"
         >
-          <div className="absolute w-96 h-96 rounded-full bg-[var(--color-accent)] opacity-20 blur-3xl animate-blob" />
+          <div className="absolute inset-x-0 h-40 opacity-10 animate-scanline" style={{ background: 'linear-gradient(180deg, transparent, var(--color-accent), transparent)' }} />
 
           <motion.div
             initial={{ y: 20, opacity: 0, scale: 0.9 }}

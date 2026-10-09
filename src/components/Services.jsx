@@ -8,7 +8,7 @@ const services = [
     icon: '☁️',
     title: 'Cloud Infrastructure Management',
     desc: 'AWS setup and ongoing management — EC2, EKS, S3, VPC, IAM — with cost control, security hardening, and migrations from other providers or on-prem.',
-    color: '#f97316',
+    color: '#2dd4bf',
   },
   {
     icon: '🌐',
@@ -20,19 +20,19 @@ const services = [
     icon: '📊',
     title: 'Alerting & Monitoring Setup',
     desc: 'Prometheus/Grafana dashboards and SLI/SLO alerting so you know about incidents before your customers do — tuned to cut noise, not just add alerts.',
-    color: '#fdba74',
+    color: '#818cf8',
   },
   {
     icon: '🗂️',
     title: 'Log Management',
     desc: 'Centralized logging with ELK Stack, Graylog, or OpenSearch — searchable, audit-compliant retention policies, built for fast root-cause analysis.',
-    color: '#22c55e',
+    color: '#34d399',
   },
   {
     icon: '🔁',
     title: 'CI/CD Pipeline Setup',
     desc: 'GitHub Actions, GitLab CI/CD, or ArgoCD pipelines with quality gates and vulnerability scanning — Blue/Green and Canary deployments, zero-downtime releases.',
-    color: '#f97316',
+    color: '#2dd4bf',
   },
   {
     icon: '☸️',
@@ -44,13 +44,13 @@ const services = [
     icon: '🔐',
     title: 'Security Hardening (DevSecOps)',
     desc: 'VAPT remediation, CVE triage, IAM least-privilege, and Nginx/HAProxy hardening — built for regulated environments like banking and finance.',
-    color: '#fdba74',
+    color: '#818cf8',
   },
   {
     icon: '⚙️',
     title: 'Automation & Scripting',
     desc: 'Bash and Ansible automation for backups, self-healing, and repetitive ops work — so your team stops doing the same manual fix every week.',
-    color: '#22c55e',
+    color: '#34d399',
   },
 ];
 
@@ -106,7 +106,7 @@ const Services = ({ isOpen, onClose }) => {
 
               <div className="relative z-10">
                 <div className="mb-14">
-                  <div className="inline-block text-xs font-bold text-[var(--color-muted)] uppercase tracking-widest mb-3 glass rounded-full px-3 py-1">// freelance</div>
+                  <div className="inline-block text-xs font-bold font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 glass px-3 py-1">[ FREELANCE ]</div>
                   <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">Services I offer</h2>
                   <p className="text-[var(--color-muted)] text-sm md:text-base max-w-lg">Open to full-time roles — and available for freelance or contract DevOps work on the side, from a single WordPress deploy to full production infrastructure.</p>
                 </div>
@@ -138,7 +138,7 @@ const Services = ({ isOpen, onClose }) => {
                 </motion.div>
 
                 <div className="flex justify-center">
-                  <MagneticButton href="#contact" onClick={onClose} data-cursor-hover className="px-6 py-3 text-sm rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-white font-bold inline-block text-center shadow-[0_8px_30px_rgba(249,115,22,0.35)]">
+                  <MagneticButton href="#contact" onClick={onClose} data-cursor-hover className="px-6 py-3 text-sm rounded-lg bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] text-black font-bold inline-block text-center shadow-[0_8px_30px_rgba(45,212,191,0.35)]">
                     Get a quote →
                   </MagneticButton>
                 </div>
